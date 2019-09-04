@@ -1,0 +1,77 @@
+{
+  "name": "mberneti",
+  "private": true,
+  "description": "mberneti",
+  "version": "1.0.0",
+  "author": "Mohammadreza Berneti <mberneti@live.com>",
+  "bugs": {
+    "url": "https://github.com/mberneti/berneti.ir/issues"
+  },
+  "dependencies": {
+    "gatsby-plugin-catch-links": "^2.0.9",
+    "gatsby-plugin-i18n": "^0.4.2",
+    "gatsby-remark-autolink-headers": "2.0.12",
+    "gatsby-remark-external-links": "^0.0.4",
+    "gatsby": "^2.15.6",
+    "gatsby-image": "^2.2.17",
+    "gatsby-plugin-feed": "^2.3.11",
+    "gatsby-plugin-google-analytics": "^2.1.14",
+    "gatsby-plugin-manifest": "^2.2.13",
+    "gatsby-plugin-offline": "^2.2.10",
+    "gatsby-plugin-react-helmet": "^3.1.6",
+    "gatsby-plugin-sharp": "^2.2.19",
+    "gatsby-plugin-typography": "^2.3.6",
+    "gatsby-remark-copy-linked-files": "^2.1.15",
+    "gatsby-remark-images": "^3.1.20",
+    "gatsby-remark-prismjs": "^3.3.12",
+    "gatsby-remark-responsive-iframe": "^2.2.12",
+    "gatsby-remark-smartypants": "^2.1.7",
+    "gatsby-source-filesystem": "^2.1.21",
+    "gatsby-transformer-remark": "^2.6.21",
+    "gatsby-transformer-sharp": "^2.2.13",
+    "prismjs": "^1.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.1",
+    "react-typography": "^0.16.19",
+    "typeface-merriweather": "0.0.72",
+    "typeface-montserrat": "0.0.75",
+    "typography": "^0.16.19",
+    "typography-theme-wordpress-2016": "^0.16.19",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.0",
+    "cp-cli": "^2.0.0",
+    "eslint": "6.3.0",
+    "eslint-plugin-react": "7.14.3",
+    "gh-pages": "^1.2.0",
+    "prettier": "^1.18.2"
+  },
+  "homepage": "https://berneti.ir",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gatsby develop",
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
+    "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "build": "rimraf public && rimraf .cache && gatsby build",
+    "now-build": "gatsby build",
+    "deploy": "yarn build && cp-cli now.json public/ && cd public && now alias $(now) berneti.ir",
+    "dry": "yarn build && cp-cli now.json public/ && cd public && now"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{gatsby-*.js,src/**/*.{js,jsx,json,css}}": [
+      "yarn format",
+      "git add"
+    ]
+  }
+}
