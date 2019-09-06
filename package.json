@@ -62,7 +62,8 @@
     "build": "rimraf public && rimraf .cache && gatsby build",
     "now-build": "gatsby build",
     "dry": "yarn build && cp-cli now.json public/ && cd public && now",
-    "deploy": "yarn build && gh-pages -d public -b master"
+    "deploy": "yarn build && gh-pages -d public -b master",
+    "deploy:github": "gh-pages -d public -b master"
   },
   "husky": {
     "hooks": {
