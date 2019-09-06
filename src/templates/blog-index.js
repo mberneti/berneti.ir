@@ -19,13 +19,13 @@ class BlogIndexTemplate extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO />
+      <Layout location={this.props.location} title={siteTitle} lang={langKey}>
+        <SEO lang={langKey} />
         <aside>
-          <Bio />
+          <Bio lang={langKey} />
         </aside>
         <main>
-          {langKey !== 'en' && langKey !== 'ru' && (
+          {langKey !== 'fa' && langKey !== 'en' && (
             <Panel>
               These articles have been{' '}
               <a
@@ -46,7 +46,7 @@ class BlogIndexTemplate extends React.Component {
                 <header>
                   <h3
                     style={{
-                      fontFamily: 'Montserrat, sans-serif',
+                      fontFamily: 'Lalezar, sans-serif',
                       fontSize: rhythm(1),
                       marginBottom: rhythm(1 / 4),
                     }}
@@ -61,7 +61,7 @@ class BlogIndexTemplate extends React.Component {
                   </h3>
                   <small>
                     {formatPostDate(node.frontmatter.date, langKey)}
-                    {` • ${formatReadingTime(node.timeToRead)}`}
+                    {` • ${formatReadingTime(node.timeToRead, langKey)}`}
                   </small>
                 </header>
                 <p

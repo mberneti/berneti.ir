@@ -6,8 +6,9 @@ import { graphql } from 'gatsby';
 class Thanks extends React.Component {
   render() {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const lang = this.props.pageContext.lang;
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={this.props.location} title={siteTitle} lang={lang}>
         <main>
           <h1>Thank you for subscribing.</h1>
           <p>

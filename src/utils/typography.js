@@ -43,7 +43,20 @@ Wordpress2016.overrideThemeStyles = () => ({
 
 delete Wordpress2016.googleFonts;
 
-const typography = new Typography(Wordpress2016);
+const customFonts = {
+  headerFontFamily: [
+    'Lalezar',
+    'Helvetica Neue',
+    'Segoe UI',
+    'Helvetica',
+    'Arial',
+    'sans-serif',
+  ],
+  bodyFontFamily: ['Vazir', 'serif'],
+  // See below for the full list of options.
+};
+
+const typography = new Typography(Object.assign(Wordpress2016, customFonts));
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {

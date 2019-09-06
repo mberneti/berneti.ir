@@ -4,6 +4,7 @@ import { rhythm } from '../utils/typography';
 
 class Bio extends React.Component {
   render() {
+    const lang = this.props.lang;
     return (
       <div
         style={{
@@ -12,20 +13,29 @@ class Bio extends React.Component {
         }}
       >
         <img
+          id="avatar"
           src={profilePic}
           alt={`Mohammadreza Berneti`}
           style={{
-            marginRight: rhythm(1 / 2),
             marginBottom: 0,
             width: rhythm(2),
             height: rhythm(2),
             borderRadius: '50%',
           }}
         />
-        <p style={{ maxWidth: 310 }}>
-          Personal blog by{' '}
-          <a href="https://mobile.twitter.com/mberneti">Mohammadreza Berneti</a>
-          . I&nbsp;explain with words and code.
+        <p style={{ fontSize: rhythm(0.6) }}>
+          {lang === 'fa' ? 'وبلاگ شخصی' : 'Personal blog by'}{' '}
+          <a href="https://mobile.twitter.com/mberneti">
+            {lang === 'fa' ? 'محمدرضا برنتی' : 'Mohammadreza Berneti'}
+          </a>
+          <br />
+          <span
+            style={{
+              fontSize: rhythm(0.5),
+            }}
+          >
+            {lang === 'fa' ? 'توسعه دهنده وب' : 'Web Developer'}
+          </span>
         </p>
       </div>
     );

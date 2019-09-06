@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'MBerneti',
+    title: 'Berneti | برنتی',
     author: 'Mohammadreza Berneti',
-    description:
-      'Personal blog by Mohammadreza Berneti. I explain with words and code.',
+    description: 'بلاگ شخصی سیدمحمدرضا‌برنتی',
     siteUrl: 'https://berneti.ir',
     social: {
       twitter: '@mberneti',
@@ -107,7 +106,7 @@ module.exports = {
                 allMarkdownRemark(
                   limit: 1000,
                   sort: { order: DESC, fields: [frontmatter___date] }
-                  filter: {fields: { langKey: {eq: "en"}}}
+                  filter: {fields: { langKey: {eq: "fa"}}}
                 ) {
                   edges {
                     node {
@@ -155,7 +154,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-i18n',
       options: {
-        langKeyDefault: 'en',
+        langKeyDefault: 'fa',
         useLangKeyLayout: false,
       },
     },

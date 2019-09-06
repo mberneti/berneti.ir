@@ -1,7 +1,7 @@
 ---
-title: A Complete Guide to useEffect
+title: تست پست اول
 date: '2019-03-09'
-spoiler: Effects are a part of your data flow.
+spoiler: برلی تست دوم.
 ---
 
 # Hello

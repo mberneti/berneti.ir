@@ -18,7 +18,7 @@ class Layout extends React.Component {
     };
   }
   renderHeader() {
-    const { location, title } = this.props;
+    const { location, title, lang } = this.props;
     const rootPath = `${__PATH_PREFIX__}/`;
 
     if (location.pathname === rootPath) {
@@ -38,7 +38,7 @@ class Layout extends React.Component {
             }}
             to={'/'}
           >
-            {title}
+            {lang === 'fa' ? 'برنتی' : 'Berneti'}
           </Link>
         </h1>
       );
@@ -46,7 +46,7 @@ class Layout extends React.Component {
       return (
         <h3
           style={{
-            fontFamily: 'Montserrat, sans-serif',
+            fontFamily: 'Lalezar, sans-serif',
             marginTop: 0,
             marginBottom: 0,
             height: 42, // because
@@ -57,11 +57,11 @@ class Layout extends React.Component {
             style={{
               boxShadow: 'none',
               textDecoration: 'none',
-              color: 'rgb(255, 167, 196)',
+              color: '#66ccff',
             }}
             to={'/'}
           >
-            {title}
+            {lang === 'fa' ? 'برنتی' : 'Berneti'}
           </Link>
         </h3>
       );

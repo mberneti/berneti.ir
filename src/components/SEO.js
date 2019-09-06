@@ -19,7 +19,7 @@ const query = graphql`
   }
 `;
 
-function SEO({ meta, image, title, description, slug, lang = 'en' }) {
+function SEO({ meta, image, title, description, slug, lang = 'fa' }) {
   return (
     <StaticQuery
       query={query}
@@ -37,9 +37,7 @@ function SEO({ meta, image, title, description, slug, lang = 'en' }) {
                   title,
                 }
               : {
-                  title: `${
-                    siteMetadata.title
-                  } — A blog by Mohammadreza Berneti`,
+                  title: `${siteMetadata.title} — A blog by Mohammadreza Berneti`,
                 })}
             meta={[
               {

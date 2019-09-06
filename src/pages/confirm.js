@@ -6,8 +6,9 @@ import { graphql } from 'gatsby';
 class Confirm extends React.Component {
   render() {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const lang = this.props.pageContext.lang;
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={this.props.location} title={siteTitle} lang={lang}>
         <main>
           <h1>Just one more thing...</h1>
           <p>
