@@ -61,9 +61,9 @@
     "start": "npm run develop",
     "build": "rimraf public && rimraf .cache && gatsby build",
     "now-build": "gatsby build",
-    "deploy": "yarn build && cp-cli now.json public/ && cd public && now alias $(now) berneti.ir && gh-pages -d public -b master",
+    "deploy": "yarn build && cp-cli now.json public/ && cd public && now alias $(now) berneti.ir",
     "dry": "yarn build && cp-cli now.json public/ && cd public && now",
-    "publish": "gh-pages -d public -b master"
+    "publish": "yarn build && gh-pages -d public -b master"
   },
   "husky": {
     "hooks": {
