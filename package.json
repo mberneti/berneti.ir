@@ -58,9 +58,9 @@
     "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "build": "rimraf public && rimraf .cache && gatsby build",
+    "build": "rimraf public && rimraf .cache && gatsby build && echo https://berneti.ir > ./public/CNAME",
     "now-build": "gatsby build",
-    "deploy": "yarn build && echo https://berneti.ir > ./public/CNAME && gh-pages -d public -b master"
+    "deploy": "yarn build && gh-pages -d public -b master"
   },
   "husky": {
     "hooks": {
