@@ -13,7 +13,6 @@ node_js:
 git:
   depth: 3
 script:
-  - npm install
   - npm build
 deploy:
   provider: pages
