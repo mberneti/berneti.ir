@@ -44,7 +44,6 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "cp-cli": "^2.0.0",
     "eslint": "6.3.0",
     "eslint-plugin-react": "7.14.3",
     "gh-pages": "^2.1.1",
@@ -61,9 +60,7 @@
     "start": "npm run develop",
     "build": "rimraf public && rimraf .cache && gatsby build",
     "now-build": "gatsby build",
-    "dry": "yarn build && cp-cli now.json public/ && cd public && now",
-    "deploy": "yarn build && gh-pages -d public -b master",
-    "deploy:github": "gh-pages -d public -b master"
+    "deploy": "yarn build && echo https://berneti.ir > ./public/CNAME && gh-pages -d public -b master"
   },
   "husky": {
     "hooks": {
