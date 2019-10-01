@@ -13,8 +13,8 @@ node_js:
 git:
   depth: 3
 script:
-  - yarn install
-  - yarn deploy
+  - npm install
+  - npm build
 deploy:
   provider: pages
   skip-cleanup: true
