@@ -1,12 +1,27 @@
+version: '3.8'
+
 services:
   b-blog-server:
-    ports:
-      - "3030:3030"
     build:
       context: .
       dockerfile: Dockerfile
+      target: runner
     container_name: b-blog-server
     restart: unless-stopped
+    ports:
+      - "3030:3030"
+    environment:
+      - NODE_ENV=production
+      - PORT=3030
+    volumes:
+      # Mount logs directory for PM2 logs
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3030', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 40s
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.b-blog-server.rule=Host(`berneti.ir`,`www.berneti.ir`)"
