@@ -14,9 +14,6 @@ WORKDIR /app
 # Copy package manager files
 COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* .npmrc* ./
 
-# Configure npm registry if needed (optional - remove if not required)
-# RUN npm config set registry https://mirror-npm.runflare.com/
-
 # Install dependencies based on the preferred package manager
 # Prefer npm ci for deterministic builds in CI/CD
 RUN if [ -f yarn.lock ]; then \
@@ -53,14 +50,17 @@ ENV PORT=3030
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S reactrouter -u 1001
 
-# Copy built assets and dependencies
+# Copy built assets from builder
 COPY --from=builder --chown=reactrouter:nodejs /app/build ./build
 COPY --from=builder --chown=reactrouter:nodejs /app/package.json ./package.json
 
-# Install only production dependencies for runtime
-COPY --from=deps /app/node_modules ./node_modules
+# Copy only production dependencies
+COPY --from=deps --chown=reactrouter:nodejs /app/node_modules ./node_modules
 
-# Install PM2 for process management (optional - can be removed for simpler deployments)
+# Create logs directory with proper permissions
+RUN mkdir -p /app/logs && chown -R reactrouter:nodejs /app/logs
+
+# Install PM2 globally for process management
 RUN npm install -g pm2@latest --unsafe-perm
 
 # Copy PM2 config
