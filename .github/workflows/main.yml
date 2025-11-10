@@ -27,4 +27,4 @@ jobs:
 "on":
   push:
     branches:
-      - dependabot/npm_and_yarn/multi-c7df638f51
+      - "**"
