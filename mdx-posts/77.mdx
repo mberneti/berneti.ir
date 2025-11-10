@@ -1,0 +1,406 @@
+---
+title: "معیارهای ارزیابی Accuracy -  Recall - Precision و F1-score"
+date: "2020-08-23T19:14:17.994Z"
+summary: "در این مطلب با استفاده از مثال‌های ساده و کاربردی به شرح مختصر و مفید معیار شناخته‌شده‌ی ارزیابی نتایج داده کاوی مثل Accuracy - Recall - Precision و F1-score می‌پردازیم."
+tags: ["f1-score", "معیارهای ارزیابی"]
+category: "روش‌های ارزیابی"
+image: "1399/1/4/253055c7-ec77-47f3-81c8-ec68615eea4a.jpg"
+---
+
+<>
+  در این مطلب با استفاده از مثال‌های ساده و کاربردی به شرح مختصر و مفید معیار
+  شناخته‌شده‌ی ارزیابی نتایج داده کاوی مثل Accuracy - Recall - Precision و
+  F1-score می‌پردازیم.
+</>
+<figure className="image image_resized" style={{"width":"84.56%"}}>
+  <img src="/img/aim.jpeg" />
+  <figcaption>
+    Photo by{" "}
+    <a href="https://unsplash.com/@clemono?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+      Clem Onojeghuo
+    </a>{" "}
+    on{" "}
+    <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+      Unsplash
+    </a>
+  </figcaption>
+</figure>
+<>
+  فرض کنید برنامه‌ای را پیاده‌سازی کردیم که یک متن را به عنوان ورودی دریافت کرده
+  و حدس می‌زند که آن جمله غیر رسمی است یا توهین آمیز.
+  <br />
+  جدول زیر شامل نتایج مورد انتظار و پیش بینی برنامه ما است.
+</>
+<figure className="table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>دیتاست</th>
+        <th>اطلاعات ورودی</th>
+        <th>نتایج واقعی</th>
+        <th>نتایج پیش بینی سیستم</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>اینستاگرام</td>
+        <td>x1</td>
+        <td>غیر رسمی</td>
+        <td>غیر رسمی</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>اینستاگرام</td>
+        <td>x2</td>
+        <td>توهین آمیز</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>اینستاگرام</td>
+        <td>x3</td>
+        <td>غیر رسمی - توهین آمیز</td>
+        <td>غیر رسمی</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>توییتر</td>
+        <td>x4</td>
+        <td>توهین آمیز</td>
+        <td>غیر رسمی</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>توییتر</td>
+        <td>x5</td>
+        <td>-</td>
+        <td>توهین آمیز - غیر رسمی</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h4>&nbsp;</h4>
+<h4>معیار accuracy یا صحت</h4>
+<>
+  شاید اولین و ساده‌ترین معیاری باشد که ما سراغ آن می‌رویم معیار
+  accuracy&nbsp;یا همان{" "}
+  <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>
+    صحت{" "}
+  </span>
+  است که برابر است با تعداد مواردی که درست پیش بینی کردیم که آن را <strong>
+    True Positive
+  </strong> می‌نامیم تقسیم بر تعداد کل پیش بینی‌هایی که انجام شده‌است.
+  <br />
+  به جدول زیر توجه کنید، ردیف True Positive نمایانگر تعداد پیش بینی‌های درست است.
+</>
+```math
+Accuracy = \frac{TP+TN}{TP + TN + FP + FN}
+```
+<figure className="table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>نتایج واقعی</th>
+        <th>نتایج پیش بینی سیستم</th>
+        <th>True Positive</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>غیر رسمی</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>توهین آمیز</td>
+        <td>-</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>غیر رسمی - توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>-</td>
+        <td>توهین آمیز - غیر رسمی</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<>
+  با توجه به جدول بالا تعداد پیش بینی‌های درست ما ۲ و تعداد کل موارد بررسی شده ۵
+  می‌باشد و{" "}
+  <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>
+    صحت{" "}
+  </span>
+  برنامه‌ی ما برابر ۰.۴ یا همان ۴۰ درصد است.
+</>
+<h4>معیار Recall یا یادآوری</h4>
+<>
+  حداکثر مقدار این معیار یک ویا ۱۰۰ درصد و حداقل مقدار آن صفر است و هرچه مواردی
+  که ما انتظار داشتیم پیش بینی شوند ولی برنامه پیش بینی نکرده‌است که به آن False
+  Negative می‌گوییم نسبت به پیش بینی‌های درست یا True Positive بیشتر باشد مقدار
+  Recall کمتر خواهد شد.
+</>
+<>
+  <strong>فرمول محاسبه‌ی Recall</strong>
+  <br />
+  در فرمول‌ زیر TP مخفف True Positive و FN مخفف False Negative است.
+</>
+```math
+Recall = \frac{TP}{TP + FN}
+```
+<>به جدول زیر توجه کنید.</>
+<figure className="table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>نتایج واقعی</th>
+        <th>نتایج پیش بینی سیستم</th>
+        <th>True Positive</th>
+        <th>False Negative</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>غیر رسمی</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>توهین آمیز</td>
+        <td>-</td>
+        <td>0</td>
+        <td>1 (توهین آمیز)</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>غیر رسمی - توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>0</td>
+        <td>1 (توهین آمیز)</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>-</td>
+        <td>توهین آمیز - غیر رسمی</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<>
+  با توجه به جدول بالا تعداد <strong>موارد پیش بینی نشده</strong> یا False
+  Negative برابر 2 است و تعداد پیش بینی‌های درست یا TP برابر 2 است و طبق فرمول
+  مقدار Recall برابر 0.5 یا 50 درصد است.
+</>
+<h4>
+  معیار{" "}
+  <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>
+    Precision{" "}
+  </span>
+  یا <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>دقت</span>
+</h4>
+<>
+  حداکثر مقدار این معیار یک ویا ۱۰۰ درصد و حداقل مقدار آن صفر است و هرچه مواردی
+  که برنامه‌ به <strong>غلط پیش بینی کرده است</strong> که به آن False Positive
+  می‌گوییم نسبت به پیش بینی‌های درست یا True Positive بیشتر باشد مقدار{" "}
+  <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>
+    Precision&nbsp;
+  </span>
+  کمتر خواهد شد.
+</>
+<>
+  <strong>فرمول محاسبه‌ی </strong>
+  <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>
+    <strong>Precision</strong>
+  </span>
+  <br />
+  در فرمول‌ زیر TP مخفف True Positive و FP مخفف False Positive است.
+</>
+```math
+Precision = \frac { TP } { TP + FP }
+```
+<>به جدول زیر توجه کنید.</>
+<figure className="table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>نتایج واقعی</th>
+        <th>نتایج پیش بینی سیستم</th>
+        <th>True Positive</th>
+        <th>False Positive</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>غیر رسمی</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>توهین آمیز</td>
+        <td>-</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>غیر رسمی - توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+        <td>1 (توهین آمیز)</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>0</td>
+        <td>1 (غیر رسمی)</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>-</td>
+        <td>توهین آمیز - غیر رسمی</td>
+        <td>0</td>
+        <td>2 (توهین آمیز - غیر رسمی)</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<>
+  با توجه به جدول بالا تعداد موارد پیش بینی نشده یا False Negative برابر 4 است و
+  تعداد پیش بینی‌های درست یا TP برابر 2 است و طبق فرمول مقدار Recall حدودا برابر
+  0.33 یا 33 درصد است.
+</>
+<h4>معیار f1-score</h4>
+<>
+  زمانی که می‌خواهید معیار ارزیابی شما میانگینی از دو مورد قبلی باشد یعنی همان
+  Recall یا Precision می‌توانید از میانگین هارمونیک این دو معیار استفاده کنید که
+  به آن <strong>معیار f1-score</strong> می‌گویند.
+</>
+```math
+F1 = \frac{2}{\frac{1}{Recall} \cdot \frac{1}{Precision}} = 2 \cdot \frac { Precision \cdot Recall } { Precision + Recall }
+```
+<>
+  مقدار Recall به دست آمده برابر 50 و Precision برابر 33 درصد است و طبق فرمول
+  مقدار f1-score حدودا برابر 39.75 درصد خواهد شد.
+</>
+<h4>معیار Micro Avg و Macro Avg</h4>
+<>
+  محاسبه‌ی Micro Avg برای Recall و Precision برابر است مقادیری که تا بحال برای
+  محاسبه‌ی Recall و Precision بدست آوردیم. نکته‌ای که در این روش وجود داشت این
+  بوده که هر یک از داده‌ها و نتایج مستقل از این که در کدام مجموعه داده هستن (در
+  مثال ما دو دیتاست اینستاگرام و توییتر وجود دارد) روی نتیجه‌ی نهایی تاثیر
+  می‌گذارند برای جلوگیری از آن می‌توان میزان Recall یا Precision هر دیتاست را
+  جدا گانه حساب کرد و درنهایت میانگین آن را به دست آورد که به آن Macro Avg
+  Recall یا Macro Avg Precision می‌گویند و با فرمول‌های زیر محاسبه می‌شوند.
+</>
+```math
+\mathrm{Macro Average\ Recall}=\frac{\sum_{i=1}^{n}Recall_i}{n}
+```
+```math
+\mathrm{Macro Average\ Precision}=\frac{\sum_{i=1}^{n}Precision_i}{n}
+```
+<>به جدول زیر توجه کنید.</>
+<figure className="table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>دیتاست</th>
+        <th>نتایج واقعی</th>
+        <th>نتایج پیش بینی سیستم</th>
+        <th>True Positive</th>
+        <th>False Negative</th>
+        <th>False Positive</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>اینستاگرام</td>
+        <td>غیر رسمی</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>اینستاگرام</td>
+        <td>توهین آمیز</td>
+        <td>-</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>اینستاگرام</td>
+        <td>غیر رسمی - توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>1 (غیر رسمی)</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>توییتر</td>
+        <td>توهین آمیز</td>
+        <td>غیر رسمی</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>توییتر</td>
+        <td>-</td>
+        <td>توهین آمیز - غیر رسمی</td>
+        <td>0</td>
+        <td>0</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<>
+  مقدار Recall برای دیتاست اینستاگرام حدودا برابر 0.66 و برای توییتر برابر 0 است
+  و طبق فرمول بالا مقدار macro avg recall برابر 0.33 است.
+</>
+<>
+  مقدار Precision برای دیتاست اینستاگرام برابر 0.66 و برای توییتر برابر 0 است و
+  طبق فرمول بالا مقدار macro avg precision برابر 0.33 است.
+</>

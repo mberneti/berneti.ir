@@ -1,0 +1,167 @@
+---
+title: "خطای Object literal may only specify known properties در تایپ اسکریپت"
+date: "2020-09-07T11:52:47.912Z"
+summary: "دلیل خطای Object literal may only specify known properties تایپ اسکریپت بررسی وجود Property اضافی است تا مانع از پذیرش آن شود، در این مطلب به دو حالت مختلف تفسیر Interface در تایپ اسکریپت اشاره می‌کنیم و "
+tags: ["js", "javascript", "تایپ اسکریپت", "typescript"]
+category: "تایپ اسکریپت"
+image: "1398/12/4/0e1890ee-eaea-4d1b-8269-fb786fffafe6.png"
+---
+
+<>دلیل خطای Object literal may only specify known properties تایپ اسکریپت بررسی وجود Property اضافی است تا مانع از پذیرش آن شود، در این مطلب به دو حالت مختلف تفسیر Interface در تایپ اسکریپت اشاره می‌کنیم و سپس راه حل‌های مختلف حل این مشکل را معرفی می‌کنیم.</><>&nbsp;</>
+<h4>Excess Property Checks یا بررسی پراپرتی اضافی</h4><>مثال زیر را به عنوان Interface و متد زیر را در نظر بگیرید.</>
+
+```typescript
+interface Point {
+  x: number;
+  y?: number;
+}
+function computeDistance(point: Point) { /*...*/ }
+```
+
+<>دو حالت مختلف کلی را برای شیوه‌ی تفسیر این interface در تایپ اسکریپت تصور کرد:</>
+
+<>
+<strong>۱ـ تفسیر بسته یا </strong><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>
+<strong>Closed interpretation: </strong>در این حالت هر object که دقیقا شامل پراپرتی‌های اینترفیس هستن قابل قبول‌اند که در این بین پراپرتی که الزامی نیست مثل y در مثال بالا می‌تواند حضور داشته باشد یا خیر اما وجود x الزامی است و درصورت وجود یک پراپرتی اضافی (Excess Property) مثل z با خطا روبرو خواهیم شد.</span>
+</>
+
+<div className="gatsby-highlight" data-language="typescript">
+<pre className="language-typescript">
+<code className="language-typescript">
+<span className="token function">computeDistance</span>
+<span className="token punctuation">(</span>
+<span className="token punctuation">{'{'}</span> x<span className="token operator">:</span> <span className="token number">1</span>
+<span className="token punctuation">,</span> y<span className="token operator">:</span> <span className="token number">2</span><span className="token punctuation">,</span> z<span className="token operator">:</span>
+ <span className="token number">3</span> 
+<span className="token punctuation">{'}'}</span><span className="token punctuation">)</span><span className="token punctuation">;</span>
+<span className="token comment">//   Object literal may only specify known properties, and 'z' does not exist in type 'Point'.(2345)</span>
+</code>
+</pre>
+</div>
+
+```typescript
+computeDistance({ x: 1, y: 2, z: 3 });
+//   Object literal may only specify known properties, and 'z' does not exist in type 'Point'.(2345)
+```
+
+
+<><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>۲ـ تفسیر باز یا <strong>Opened interpretation: </strong>در این حالت کافیست یک شیئ دارای یک زیر مجموعه‌ای از اینترفیس مورد نظر باشد برای مثال آبجکتی شامل پراپرتی x و z در این حالت قابل قبول هست چون دارای پراپرتی‌های الزامی اینترفیس Point است و از طرفی دیگر داشتن پراپرتی اضافی z مانند مثال قبل در این حالت باعت ایجاد خطا نمی‌شود و پذیرفته‌است.</span></>
+
+```typescript
+const obj = { x: 1, z: 3 };
+computeDistance(obj); // OK
+```
+
+<h4>Excess Property Checks یا بررسی پراپرتی اضافی چه کمکی می‌کند؟</h4><>زمانی که ورودی یک متد را با یک متغیر که بصورت‌های مختلف در برنامه ایجاد می‌شود مقداردهی می‌کنیم <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}><strong>Opened interpretation</strong> رخ می‌دهد و بررسی وجود پراپرتی اضافی بررسی نمی‌شود ولی در حالتی که خودمان بصورت یک Object literal به عنوان ورودی تابع در نظر می‌گیریم 
+<strong>Closed interpretation</strong> رخ می‌دهد و اگر در زمان نوشتن پراپرتی‌های آبجکت خطای تایپی رخ دهد که در این حالت احتمال بیشتری دارد تایپ اسکریپت آن را به عنوان یک پراپرتی اضافی در نظر گرفته و هشدار می‌دهد.</span><br /><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>مثال زیر را در نظر بگیرید:</span></>
+
+```typescript
+interface Person {
+  first: string;
+  middle?: string;
+  last: string;
+}
+function computeFullName(person: Person) { /*...*/ }
+```
+
+<>فرض کنید بصورت زیر و به روش Object literal می‌خواستیم ورودی تابع computeFullName را مقداردهی کنیم ولی بجای middle به اشتباه mdidle تایپ کردیم.</>
+
+```typescript
+computeFullName({first: 'Jane', mdidle: 'Cecily', last: 'Doe'});
+// @ts-ignore: Argument of type '{ first: string; mdidle: string; last: string; }' is not assignable to parameter of type 'Person'.
+//   Object literal may only specify known properties, but 'mdidle' does not exist in type 'Person'. Did you mean to write 'middle'?
+```
+
+
+<>همین طور که مشاهده می‌کنید به لطف وجود <a href="https://www.typescriptlang.org/docs/handbook/interfaces.html#excess-property-checks">Excess Property Checks</a> در تایپ اسکریپت این هشدار واضح را مبنی بر اینکه احتمالا اشتباهاً بجای `middle` عبارت `mdidle` را تایپ کردیم نمایش داده می‌شود.</>
+
+<h4>روشهای جلوگیری از بررسی وجود پراپرتی‌های اضافی</h4>
+<>۱ـ استفاده از یک متغیر واسط برای مقداردهی به متد یک تابع</>
+
+```typescript
+const obj = { x: 1, y: 2, z: 3 };
+computeDistance1(obj);
+```
+
+<>۲ـ استفاده از <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>type assertion بصورت زیر</span></>
+
+```typescript
+computeDistance1({ x: 1, y: 2, z: 3 } as Point); // OK
+```
+
+<>۳ـ بازنویسی متد <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>computeDistance1 و استفاده از یک type parameter</span></>
+
+```typescript
+function computeDistance2<P extends Point>(point: P) { /*...*/ }
+computeDistance2({ x: 1, y: 2, z: 3 }); // OK
+```
+
+<>۴ـ بازنویسی اینترفیس Point&nbsp;با اضافه کردن یک Index signature بصورت زیر برای اینکه پراپرتی‌های اضافی را بپذیرد</>
+
+```typescript
+interface Person {
+  first: string;
+  middle?: string;
+  last: string;
+  // Index signature
+  [propName: string]: any;
+}
+```
+
+<>در ادامه یک مثالی را بررسی می‌کنیم که Excess Property Checks تایپ اسکریپت مشکل ایجاد می‌کند.</><>در مثال زیر می‌خواهیم <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>
+Incrementor را پیاده‌سازی کنیم ولی تایپ اسکریپت اجازه‌ی اضافه کردن یک پراپرتی جدید به عنوان counter را نمی‌دهد.</span></>
+
+```typescript
+interface Incrementor {
+  inc(): void
+}
+
+function createIncrementor(start = 0): Incrementor {
+  return {
+    // @ts-ignore: Type '{ counter: number; inc(): void; }' is not assignable to type 'Incrementor'.
+    //   Object literal may only specify known properties, and 'counter' does not exist in type 'Incrementor'.(2322)
+    counter: start,
+    inc() {
+      // @ts-ignore: Property 'counter' does not exist on type 'Incrementor'.(2339)
+      this.counter++;
+    },
+  };
+}
+```
+
+<>حتی زمانیکه از <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>type assertion استفاده می‌کنیم همچنان مشکل باقی است.</span></>
+
+```typescript
+function createIncrementor2(start = 0): Incrementor {
+  return {
+    counter: start,
+    inc() {
+      // @ts-ignore: Property 'counter' does not exist on type 'Incrementor'.(2339)
+      this.counter++;
+    },
+  } as Incrementor;
+}
+```
+
+<>برای حل این مشکل می‌توان از دو روش زیر استفاده کرد:</><>۱ـ استفاده از متغیر واسط</>
+
+```typescript
+function createIncrementor3(start = 0): Incrementor {
+  const incrementor = {
+    counter: start,
+    inc() {
+      this.counter++;
+    },
+  };
+  return incrementor;
+}
+```
+
+<>۲ـ در صورت امکان اضافه کردن Index signature به اینترفیس Incrementor</>
+
+```typescript
+interface Incrementor {
+  inc(): void;
+  [propName: string]: any;
+}
+```

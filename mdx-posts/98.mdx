@@ -1,0 +1,27 @@
+---
+title: "مفهوم point-free و Equational Reasoning چیست؟"
+date: "2022-05-05T09:34:41.609Z"
+summary: "null"
+tags: []
+category: "Functional Programming"
+image: "1398/12/4/0e1890ee-eaea-4d1b-8269-fb786fffafe6.png"
+---
+
+<h4>روش point-free</h4>
+
+<p><strong>point-free</strong>
+روشی مرسوم بین توسعه‌دهندگان فانکشنال است که توابع را با استفاده از ترکیبی از توابع دیگر بسازند و هرگز اشاره‌ای به ورودی‌های آن توابع نکنند.</p>
+
+<p><strong>Equational Reasoning</strong> روشی است که با آن می‌توان استدلال کرد که دو عبارت معادل یکدیگر و قابل تعویض هستند که از این طریق هم می‌توان مانند زیر یک قطعه کد را به سبک point-free تبدیل کرد.</p><>تابع زیر point-free نمی‌باشد زیرا به آرگمان person اشاره می‌کند.</>
+
+```javascript
+getPerson(function onPerson(person){
+	return renderPerson(person);
+});
+```
+
+<p>با استدلال برابری قطعه کد زیر که معادل با قطعه کد بالا (Equational Reasoning) و حذف person، تابع زیر به حالت point-free تبدیل شده‌است.</p>
+
+```javascript
+getPerson(renderPerson);
+```

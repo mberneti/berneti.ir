@@ -1,0 +1,9 @@
+node_modules
+.cache
+dist
+.react-router
+.vite-ssg-temp
+*.log
+.DS_Store
+.env*
+!.env.example

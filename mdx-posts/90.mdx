@@ -1,0 +1,158 @@
+---
+title: "سوالهای جاوااسکریپتی مصاحبه‌ی فرانت اند"
+date: "2020-10-03T10:28:40.322Z"
+summary: "در این مطلب می‌خوام از سوالهای مصاحبه‌ی شرکت‌های مختلف مثل کافه بازار که یادم مونده برای موقعیت برنامه نویس فرانت اند یا فرانت اند دولوپر بنویسم. "
+tags: ["javascript"]
+category: "جاوااسکریپت"
+image: "1398/12/4/0e1890ee-eaea-4d1b-8269-fb786fffafe6.png"
+---
+
+<>کدام اسب سریع‌تر می‌رسد؟ :) </>
+<br />
+<>مورد اول</>
+
+```javascript
+setTimeout(() => console.log("Horse A"), 1000)
+console.log("Horse B")
+```
+
+<>مورد دوم</>
+
+```javascript
+setTimeout(() => console.log("Horse A"), 0)
+console.log("Horse B")
+```
+
+<>مورد سوم</>
+
+```javascript
+setTimeout(() => console.log("Horse A"), 0);
+wait60Se(); //expensive sync computation
+console.log("Horse B")
+```
+
+<>مورد چهارم</>
+
+```javascript
+const operation = fetch('http://something.com');
+operation.then(() => console.log("Horse A"));
+console.log("Horse B")
+```
+
+<>مورد پنجم</>
+
+```javascript
+setTimeout(() => console.log("Horse A"), 0);
+const promise = Promise.resolve(); 
+promise.then(() => console.log("Horse B"));
+```
+
+<>مورد ششم</>
+```javascript
+setTimeout(() => console.log("Horse A"), 5)
+const promise = new Promise((resolve) => {
+   setTimeout(() => resolve(), 10) 
+})
+promise.then(() => console.log("Horse B"))
+```
+
+<>مورد هفتم</>
+```javascript
+setTimeout(() => console.log("Horse A"), 0);
+const promise = fetch("someUrl") // takes 100ms
+promise.then(x => console.log("Horse B"));
+waitFor200ms();
+```
+
+<>منابع:</>
+<ul>
+<li><a href="https://javascript.plainenglish.io/you-dont-know-javascript-until-you-can-beat-this-game-aa7fd58befb?">javascript.plainenglish.io</a></li>
+</ul>
+
+<h4><br />رفع مشکل سایدبار</h4>
+
+<>https://codepen.io/mberneti/pen/eYgwreg</>
+
+```text
+Select all p elements which have a "lang" attribute equal to "en", 
+and are the direct child of "div" elements with CSS class "post"?
+```
+
+
+```javascript
+How would you improve the following code?
+const orders = [500, 30, 99, 15, 223];
+const total = 0;
+const withTax = [];
+const highValue = []; // is more than 100
+
+// > const total = orders.reduce((acc, cur) => acc + cur);
+// > const withTax = orders.map(v => v * 1.1);
+// > const highValue = orders.filter(v => v > 100);
+```
+
+```javascript
+Given a sorted array and a number x, find a pair in array whose sum is closest to x.
+Examples:
+Input: arr[] = {10, 22, 28, 29, 30, 40}, x = 54
+Output: 22 and 30
+Input: arr[] = {1, 3, 4, 7, 10}, x = 15
+Output: 4 and 10
+```
+
+
+```javascript
+Improve findByUserId with changing data structure:
+user = [{userId:"asd",name:"bernet"},{userId:"ahwuiq",name:"mohammadreza"}]
+```
+
+
+<div className="mt-20"></div>
+
+#### جواب‌ها
+
+همه‌ی موارد بجز مورد ششم اسب B  اول میشه.
+
+
+
+```javascript
+withTax = orders.map((item) => {
+   total += orders[i];
+		return item * 1.1;
+});
+
+for (i = 0; i < orders.length; i++) {
+   total += orders[i];
+
+   withTax.push(orders[i] * 1.1);
+
+   if (orders[i] > 100) {
+      highValue.push(orders[i]);
+   }
+}
+```
+
+```javascript
+let diff = Infinity;
+
+let l = 0;
+let r = arr.length - l;
+
+while() {
+
+ let currentDiff = x - arr[l] + arr[r];
+  if(currentDiff < diff)
+  {
+  	diff = currentDiff;
+  }
+   
+  if(x > arr[l] + arr[r])
+  {
+  	l++;
+  }
+  else {
+  	r--;
+  }
+
+}
+```

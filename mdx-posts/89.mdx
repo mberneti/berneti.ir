@@ -1,0 +1,132 @@
+---
+title: "برنامه‌نویسی فانکشنال در جاوااسکریپت - قسمت ۲"
+date: "2020-09-22T04:29:32.734Z"
+summary: "در این مطلب به شرح مفاهیم پایه برنامه نویسی فانکشنال بصورت خلاصه می‌پردازیم.
+Pure Functions - Function Composition - Shared State - Race condition - Immutability - Side Effects - Higher-Order-Functions - DeclarativevsImperative"
+tags: ["js","javascript","functional programming","race condition","immutability","imperative","higher order functions","function composition"]
+category: "Functional Programming"
+image: "1398/12/4/0e1890ee-eaea-4d1b-8269-fb786fffafe6.png"
+---
+
+<>در قسمت اول یعنی<a href="https://www.berneti.ir/87/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C-%D9%81%D8%A7%D9%86%DA%A9%D8%B4%D9%86%D8%A7%D9%84-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D9%82%D8%B3%D9%85%D8%AA-%DB%B1-pure-functions"> Pure Functions</a> بصورت خاص به شرح توابع Pure در جاوااسکریپت پرداختیم و در این مطلب به شرح مفاهیم پایه برنامه نویسی فانکشنال بصورت خلاصه می‌پردازیم که شامل عناوین زیر است.</>
+
+<ul><li>Pure Functions</li><li>Function Composition</li><li>Shared State</li><li>Race condition</li><li>Immutability</li><li>Side Effects</li><li>Higher Order Functions</li><li>Functors&nbsp;- Containers - Streams</li><li>Declarative vs Imperative</li></ul>
+
+<h4>Pure Functions</h4>
+
+<>توابعی هستند که شرایط زیر را داشته باشند:</>
+<ol><li>به ازای ورودی یکسان همیشه خروجی یکسان تولید کنند.</li><li>اثرات جانبی یا Side effects نداشته باشند.</li></ol>
+
+<h4>Function Composition</h4>
+
+به فرایند ترکیب دو تابع برای تولید یک تابع جدید گفته می‌شود. ‍`f.g{:text}` (نقطه به معنای "ترکیب می‌شود با:") برابر با 
+$$f(g(x))$$
+ در جاوا اسکریپت است. مثال:
+
+```javascript
+const inc = n => n + 1;
+inc(double(2)); // 5
+```
+
+<h4>Shared State</h4>
+
+<>به هر متغیر، شیئ یا فضای حافظه که در یک محدوده‌ای به اشتراک گذاشته شده ویا پراپرتی یک شیئ‌ای که بین محدوده‌های مختلف (scopes) ارسال می‌شود. یک محدوده‌ی مشترک می‌تواند شامل global scope یا closure scopes باشد.</>
+<h4>&nbsp;</h4>
+
+<h4>Race condition</h4>
+<>فرض کنید یک برنامه نوشتید که زمان تایپ در وردی نتایج جستوجو را با یک API call دریافت کرده نمایش می‌دهد حال فرض کنید جواب درخواست‌هایی که زمان تایپ یک کلمه ارسال شده است دیرتر از جواب درخواستی که پس از تکمیل نوشتن کلمه مورد نظر برسد، در این شرایط نتیجه‌ای مورد نظر صحیح نمی‌باشد و کاملا وابسته به توالی و سرعت رسیدن جواب درخواست‌های API هست، به این شرایطی که جواب قطعی وجود ندارد و نتیجه به سرعت پاسخگویی چند عامل مختلف وابسته است race condition می‌گویند.</>
+<>&nbsp;</>
+
+<h4>Immutability</h4>
+<>یک شیئ immutable یا غیر قابل تغییری شیئ‌ای است که بعد از اینکه ساخته شد غیر قابل تغییر است.</><>immutability یک مفهووم اصلی در برنامه‌نویسی فانکشنال است زیرا بدون آن جریان داده در برنامه از دست می‌رود و با تغییرات در state تاریخچه‌ی آن از دست می‌رود.</>
+<><strong>نکته:</strong>
+ <strong>const</strong> در جاوااسکریپت نباید با immutability اشتباه گرفته شود. 
+ <strong>const</strong> شیئ‌های immutable تولید نمی‌کند بلکه صرفا بعد از مقدار دهی یک شیئ به یک متغیر دیگر نمی‌توان مجددا شیئ جدیدی به آن متغیر متصل کرد ولی همچنان پراپرتی‌های آن شیئ قابل تغییر می‌ماند.</>
+ <>شیئ‌های immutable بصورت کلی غیر قابل تغییر هستند. یک مقدار immutable زمانی ساخته می‌شود که یک شیئ بصورت عمیق freeze شده‌است (به عبارتی همه‌ی پراپرتی‌های یک آبجکت در هر سطحی که باشند غیر قابل تغییر باشند.). جاوااسکریپت یک متد وجود دارد که یک شیئ را در یک-سطح freeze می‌کند.</>
+
+
+```javascript
+const a = Object.freeze({
+ foo: 'Hello',
+ bar: 'world',
+ baz: '!'
+ });
+
+a.foo = 'Goodbye';
+// Error: Cannot assign to read only property 'foo' of object Object
+```
+
+<>این شیئ بصورت سطحی immutable است. به مثال زیر توجه کنید که این شیئ در واقع قابل تغییر یا mutable است.</>
+
+```javascript
+const a = Object.freeze({
+ foo: { greeting: 'Hello' },
+ bar: 'world',
+ baz: '!'
+ });
+
+ a.foo.greeting = 'Goodbye';
+
+ console.log(`${ a.foo.greeting }, ${ a.bar }${a.baz}`);
+ // 'Goodbye, world!'
+```
+
+ <>&nbsp;</><>کتابخانه‌های جاوااسکریپتی مختلفی مثال <a href="https://immutable-js.github.io/immutable-js/">Immutable.js</a> و <a href="https://github.com/swannodette/mori">Mori</a> وجود دارد که از مزیت درخت‌ها استفاده می‌کنند.</><>&nbsp;</>
+ 
+ <h4>Side Effects</h4>
+ 
+ <>به هرگونه تاثیر خارجی یک تابع بجز آن مقداری که به عنوان خروجی بر می‌گرداند می‌گویند، این تاثیر می‌تواند نوشتن یک لاگ در کنسول باشد یا یک درخواست API Get ساده.</><>انواع Side Effects</>
+ <ul><li>ایجاد تغییر در هر متغیر یا object عمومی یا global</li><li>لاگ کردن در کنسول با استفاده از console.log</li><li>نوشتن یا نمایش چیزی در صفحه‌ی نمایش</li><li>نوشتن اطلاعات در یک فایل</li><li>ارسال اطلاعات از طریق شبکه</li><li>اجرا کردن هر فرایند خارجی یا عملیات I/O</li><li>فراخوانی هر تابع خارجی دارای Side Effects</li></ul>
+ <>&nbsp;</>
+
+ <h4>قابلیت استفاده‌ی مجدد با Higher Order Functions</h4>
+
+ <><a href="https://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK"><strong>higher order functions</strong></a> توابعی هستند که عملیاتی را روی دیگر توابع انجام می‌دهند بصورتی که یا آنها را به عنوان ورودی می‌گیرند یا آن توابع را بر می‌گردانند و یا هر دو حالت. higher order functions اغلب برای موارد زیر استفاده می‌شوند:</><ul><li>برای انتزاع و مجزا کردن اکشن‌ها، effects و کنترل جریان‌های هم زمان با استفاده از callback functions، promises و monads &nbsp;و غیره</li><li>ساخت ابزارهای کلی یا generic که روی انواع مختلفی از داده‌ها عملیاتی را انجام می‌دهند.</li><li>برای اعمال کردن تابع روی بخشی از ورودی‌ها یا تولید یک curried function برای استفاده‌ی مجدد از آن ویا ترکیب دو تابع</li><li>دریافت یک لیستی از توابع به عنوان ورودی و برگرداندن یک نوع ترکیب خاص از آنها</li></ul><>جاوا اسکریپت دارای 
+ <strong>first class function</strong> است که به آن اجازه می‌دهد با توابع همانند داده‌ها رفتار کند، آنها را به متغیرها assign کند، آنها را به عنوان ورودی توابع قرار دهد یا آنها را به عنوان خروجی برگرداند.</><>&nbsp;</>
+ 
+ <h4>Functors&nbsp;- Containers - Streams</h4>
+ 
+ <>ساختار داده‌ای functor یک نوع ساختار داده‌ای می‌باشد که می‌توان یک نوع نگاشت از روی آن تولید کرد. مانند:<strong>[1,2,3].map(x =&gt; x*2))</strong>
+  به عبارت دیگر یک container ای است که شامل interface می‌باشد که از آن طریق می‌توان یک تابع را روی مقادیری که نگه می‌دارد اعمال کرد. بصورت کلی کلمه functor یادآور کلمه‌ی <strong>mappable </strong>یا قابل نگاشت بودن است.</><>برای مثال در مورد <strong>Array.prototype.map()</strong> ، <strong>Array</strong> یک container بحساب می‌آید و علاوه بر Array هر نوع دیگر از ساختار داده‌ها که API نگاشت کردن یا mapping را پیاده‌سازی کرده باشند یک 
+  <strong>functor </strong>به حساب می‌آیند.</><>استفاده از انتزاعاتی مانند functors و higher order function به منظور ساخت توابع کمکی کلی یا generic که می‌توانند تغییراتی در هر تعدادی از انواع مختلف داده‌ها ایجاد کنند، در برنامه‌نویسی فانکشنال مهم هستند.</><>آرایه‌ها و functors تنها مفاهیمی نیستند که شامل یک container و مقادیری که در آن نگه داشته می‌شود می‌باشد. برای مثال آرایه یک لیستی از آیتم هاست و 
+  <strong>stream</strong> یک لیستی است که در طول یک بازه زمانی شکل گرفته‌است. بنابراین می‌توان از ابزارهای کمکی مشابهی که برای آرایه‌ها و functors تولید کردیم برای پردازش stream های رسیده از رویدادها نیز استفاده نماییم.</><>&nbsp;</>
+  
+<h4>Declarative vs Imperative</h4><>برنامه نویسی فانکشنال یک پارادایم یا الگوی Declarative است ، به این معنی که 
+  <strong>منطق برنامه</strong> بدون توصیف صریح کنترل جریان بیان می‌شود.</><ul><li>
+  <strong>Imperative </strong>بیانگر How to do things یا <strong>چگونه انجام دادن</strong>.<br />برنامه‌هایی که با استفاده از خطوط کد به شرح <strong>کنترل جریان </strong>یا <strong>همان مراحل خاصی که برای رسیدن به نتایج مطلوب مورد استفاده قرار می‌گیرد</strong> imperative هستند.<br />&nbsp;</li><li>
+  <strong>Declarative </strong>بیانگر What to do یا <strong>چه کاری انجام دادن</strong>.<br />برنامه‌هایی که فرایند کنترل جریان را خلاصه می‌کند و در ازای آن با استفاده از خطوط کد به شرح جریان داده می‌پردازد.</li></ul>
+  <>مثال زیر یک نگاشت imperative را نشان می‌دهد که یک آرایه را دریافت کرده و خروجی آن یک آرایه جدید است که هر آیتم آن حاصل دوبرابر شدن آیتم‌های آرایه ورودی است.</>
+  
+```javascript
+const doubleMap = numbers => {
+ const doubled = [];
+ for (let i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2);
+ }
+ return doubled;
+};
+
+console.log(doubleMap([2, 3, 4])); // [4, 6, 8]
+```
+
+<>نگاشت declarative زیر همان کار برنامه بالا را انجام می‌دهد با این تفاوت که با استفاده از ابزار فانکشنال <strong>Array.prototype.map()</strong> کنترل جریان را خلاصه می‌کند، که باعث می‌شود جریان داده واضح‌تر بیان شود.</>
+
+```javascript
+const doubleMap = numbers => numbers.map(n => n * 2);
+
+console.log(doubleMap([2, 3, 4])); // [4, 6, 8]
+```
+
+<><strong>کدهای Imperative</strong> اغلب از statements استفاده می‌کنند. یک <strong>statement</strong> قسمتی از کد است که یک فعالیتی را انجام می‌دهد مانند: if - for - switch - throw و غیره.</><><strong>کدهای Declarative</strong> بیشتر به expressions متکی هستند. یک <strong>expression</strong> قسمتی از کد است که مقداری را بر می‌گرداند. expressions معمولا شامل ترکیبی از توابع و مقادیر و عمگرها هستند که خروجی آنها تولید یک مقدار از نتیجه آن ترکیب است. مانند مثال‌های زیر</>
+
+```javascript
+2 * 2
+
+doubleMap([2, 3, 4])
+
+Math.max(4, 3, 2)
+
+'a' + 'b' + 'c'
+
+{...a, ...b, ...c}
+```

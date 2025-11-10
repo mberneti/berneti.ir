@@ -1,0 +1,65 @@
+---
+title: "داده کاوی - ۷ - شباهت کسینوسی تعدیل یافته"
+date: "2020-04-28T18:57:11.085Z"
+summary: "شرح معیار شباهت کسینوسی تعدیل یافته و مقایسه با معیار شباهت کسینوسی"
+tags: ["داده کاوی", "پایتون", "شباهت"]
+category: "داده کاوی در پایتون"
+image: "1399/1/4/36e2915d-70af-4704-a3e6-9ecb577c36b5.jpg"
+---
+
+<figure className="image"><img src="/img/cosine-similarity-1.jpeg" /><figcaption><a href="https://youtu.be/J50uwryTffQ?t=30">How to adjust seat angle on a Dutch bicycle</a></figcaption></figure>
+
+<h4>مسئله</h4><>می‌خواهیم شباهت فیلم‌ها را با توجه به امتیازات کاربران به آن‌ها در مجموعه داده‌ای <strong>ratings_grade_inflation2 </strong>که جزئیات آن در <a href="https://www.berneti.ir/63/%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C-%DB%B3-%D8%AC%D8%B2%D8%A6%DB%8C%D8%A7%D8%AA-%D8%AF%DB%8C%D8%AA%D8%A7%D8%B3%D8%AA-%D9%87%D8%A7">داده کاوی - ۳ - جزئیات دیتاست‌ها</a>
+ در دسترس است محاسبه کنیم.</>
+
+| Movie        | u1 | u2 | u3 | u4 |
+|--------------|----|----|----|----|
+| Interstellar | 1  | 2  | 3  | 4  |
+| Inception    | 1  | 2  | 3  | 4  |
+| Hangover     | 4  | 3  | 2  | 1  |
+
+<>با نگاهی کوتاه به نظرات کاربران می‌توان به این نتیجه رسید که شباهت دو فیلم interstellar و inception بیشتر از شباهت interstellar و hangover هست، به عبارتی در بهترین حالت انتظار داریم معیار ما شباهت کامل را برای دو فیلم interstellar و inception نتیجه دهد و عدم شباهت کامل برای دو مورد بعدی زیرا نظر کاربران برای دو فیلم interstellar و inception کاملا مشابه و برعکس نظر&nbsp;هر کاربر برای interstellar و hangover&nbsp;متفاوت بوده.</><>ابتدا با روش شباهت کسینوسی که در <a href="https://www.berneti.ir/68/%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C-%DB%B5-%D8%B4%D8%A8%D8%A7%D9%87%D8%AA-%DA%A9%D8%B3%DB%8C%D9%86%D9%88%D8%B3%DB%8C">داده کاوی - ۵ - شباهت کسینوسی</a> به شرح آن پرداختیم میزان شباهت فیلم‌ها را محاسبه می‌کنیم و به نتیجه زیر می‌رسیم.</>
+
+```text
+Interstellar-Inception:1.000000
+Interstellar-Hangover:0.666667
+```
+
+<>خروجی بدست آمده به نتاج مورد نظر ما نزدیک است، همانطور که انتظار داشتیم میزان شباهت Interstellar-Inception برابر شباهت کامل یعنی مثبت یک شد ولی برای دو فیلم Interstellar-Hangover که انتظار عدم شباهت کامل یعنی منفی یک را داشتیم عدد مثبت 0.666 حاصل شد!</><><strong>فرمول شباهت کسینوسی تعدیل یافته یا Adjusted Cosine Similarity&nbsp;</strong></>
+
+```math
+s(x,y) = 
+\frac
+{\sum_{i=1}^{n}{(x_i-\bar{x}) (y_i-\bar{y})}}
+{\sqrt{\sum_{i=1}^{n}(x_i-\bar{R_i})^2}\sqrt{\sum_{i=1}^n(y_i-\bar{R_i})^2}}
+```
+
+ برابر میانگین مقادیر ثبت شده برای ویژگی i است که در مثال ما برابر میانگین امتیازات یک فرد مثل alireza است. در روش شباهت کسینوسی تعدیل شده با کم کردن میانگین امتیازات کاربر از امتیازهایش سعی شده تا مشکل تورم درجه حل شود.
+ <><strong>پیاده‌سازی شباهت کسینوسی تعدیل یافته در پایتون</strong></>
+ 
+```python
+def mean(lst): 
+    return sum(lst) / len(lst) 
+
+def dot(A,B,a_mean,b_mean): 
+    return (sum((a-a_mean)*(b-b_mean) for a,b in zip(A,B)))
+
+def get_adjusted_cosine_similarity(rating1,rating2):
+    a = rating1.values()
+    a_mean = mean(a)
+    b = rating2.values()
+    b_mean = mean(b)
+    return dot(a,b,a_mean,b_mean) / ( (dot(a,a,a_mean,a_mean) **.5) * (dot(b,b,b_mean,b_mean) ** .5) )
+```
+
+<>همانطور که مشاهده می‌کنید تغییر اصلی متد شباهت کسینوسی که در <a href="https://www.berneti.ir/68/%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C-%DB%B5-%D8%B4%D8%A8%D8%A7%D9%87%D8%AA-%DA%A9%D8%B3%DB%8C%D9%86%D9%88%D8%B3%DB%8C">داده کاوی - ۵ - شباهت کسینوسی</a>
+ مطرح شد شامل اضافه شدن تابع mean برای محاسبه‌ی میانگین امتیازات دو کاربر و کم کردن میانگین امتیازات هر فرد زمان استفاده از امتیاز اوست.</><>حال مجددا میزان شباهت را با استفاده از روش <strong>شباهت کسینوسی تعدیل یافته</strong> با متد get_adjusted_cosine_similarity بدست می‌آوریم.</>
+
+```text
+Interstellar-Inception:1.000000
+Interstellar-Hangover:-1.000000
+```
+
+<>همانطور که مشاهده می‌کنید جواب بدست آمده با روش<strong> کسینوسی تعدیل یافته</strong>&nbsp;برابر جواب مورد انتظار ما است یعنی شباهت کامل دو فیلم Interstellar و Inception و عدم شباهت کامل Interstellar و Hangover.</>
+<ul><li><a href="https://www.berneti.ir/adjusted_cosine_similarity.html">لینک مشاهده‌ی کدها و نتیجه‌ی اجرا</a></li>
+<li><a href="https://github.com/mberneti/datamining-python/blob/master/datamining_python/examples/adjusted_cosine_similarity.ipynb">لینک کدهای این قسمت در گیت هاب</a></li></ul>

@@ -1,0 +1,46 @@
+---
+title: "تفاوت اجرای Lazy و Eager"
+date: "2022-05-06T06:19:49.627Z"
+summary: "مقایسه‌ی اجرای Lazy و Eager"
+tags: ["javascript"]
+category: "Functional Programming"
+image: "1398/12/4/11538888-9e81-4349-8995-04d2c75de4cc.jpeg"
+---
+
+<div>در این مطلب به شرح شیوه پیاده‌سازی و مقایسه‌ی اجرای lazy و eager برای تابعی مانند <strong>heavyCalculation</strong> که محاسبات سنگینی را انجام می‌دهد، می‌پردازیم.</div>
+
+<h4>پیاده‌سازی Eager Execution</h4>
+
+```javascript
+function eager(data){
+	const result = heavyCalculation(data);
+	return function next() {
+		return result;
+		}
+}
+
+const calc = eager({...});
+...
+calc();
+```
+
+
+
+<p>مزیت اجرای Eager در این است که محاسبات سنگین فقط یکبار زمان تعریف تابع calc انجام می‌شود و به عبارتی با کش کردن result مانع از انجام محاسبات سنگین زمان فراخوانی calc می‌شود.&nbsp;</p><h4>پیاده‌سازی Lazy Execution</h4>
+
+
+```javascript
+function lazy(data){
+	return function next() {
+		return heavyCalculation(data);
+		}
+}
+
+const calc = lazy({...});
+...
+calc();
+```
+
+
+<p>در حالت اجرای Lazy زمان تعریف متد <strong>calc</strong> هیچ محاسباتی انجام نمی‌گیرد و با هر بار فراخوانی تابع calc محاسبات سنگین مجددا اجرا می‌شود که قسمت منفی این حالت است.</p>
+<p>نکته مثبت اجرای Lazy برای حالاتی هست که اجرای متد calc وابسته به شرایطی باشد که امکان دارد هنگام اجرا متد calc فراخوانی نشود و بدین ترتیب هیچگاه عملیات سنگین اجرا نمی‌شود. در صورتی که در حالت eager در زمان تعریف calc تحت هر شرایطی یکبار متد <strong>heavyCalculation</strong> اجرا خواهد شد.</p>

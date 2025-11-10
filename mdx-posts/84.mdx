@@ -1,0 +1,84 @@
+---
+title: "امید ریاضی - گشتاور مرتبه‌ی nام"
+date: "2020-08-29T20:47:10.288Z"
+summary: "در این مطلب بصورت خلاصه با مثال‌های کاربردی به شرح امید ریاضی - گشتاور مرتبه‌ی nام و کاربرد آنها خواهیم پرداخت."
+tags: ["واریانس", "ممان", "امید ریاضی", "انحراف معیار", "چولگی", "گشتاور"]
+category: "مفاهیم پایه آمار"
+image: "1399/1/4/7c5325d7-feab-4c2a-800f-aa384452d37d.jpg"
+---
+
+<>
+  در این مطلب بصورت خلاصه با مثال‌های کاربردی به شرح امید ریاضی - ممان مرتبه‌ی
+  nام و کاربرد آنها خواهیم پرداخت.
+</>
+<h4>امید ریاضی</h4>
+<>
+  برابر با حد متوسط یا به عبارتی میانگینی از احتمال رخ دادن یک متغیر تصادفی است.
+</>
+
+```math
+E(X) = \sum^{n}_{i=1}x_iP(x_i)
+```
+<h4>
+  <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>
+    گشتاورها{" "}
+  </span>
+  یا Moments
+</h4>
+<>
+  شاخص‌هایی هستند که خصوصیات توابع توزیع احتمال یا PDF ها را توصیف می‌کنند.
+  فرمول زیر فرمول کلی محاسبه‌ی گشتاور kام است.
+</>
+
+$$
+\mu_n = E(X - \mu)^k = \sum^{n}_{i=1}(x_i-\mu)^{k}P(x_i)
+$$
+
+<>
+  <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(33,37,41)"}}>
+    گشتاور صفرم برای یک متغیر تصادفی، برابر با کل احتمال یا مقدار ۱ است. گشتاور
+    اول بیانگر میانگین و گشتاور مرکزی دوم نیز واریانس (Variance) را مشخص می‌کند.
+    گشتاورهای سوم و چهارم نیز متناسب با چولگی و کشیدگی توزیع احتمال متغیر تصادفی
+    خواهند بود.
+  </span>
+</>
+<h4>
+  گشتاور اول: میانگین
+  <br />
+  Mean: 1st Raw Moment
+</h4>
+$$
+E(X) = \sum^{n}_{i=1}x_iP(x_i)
+$$
+<h4>
+  گشتاور دوم: واریانس یا پراکندگی
+  <br />
+  Variance: 2nd Central Moment
+</h4>
+$$
+variance = \sigma^2 = E(X - \mu)^2 = \sum^{n}_{i=1}(x_i-\mu)^{2}P(x_i)
+$$
+<h4>
+  گشتاور سوم استاندارد شده: چولگی
+  <br />
+  Skewness: Standradized 3nd Central Moment
+</h4>
+<figure className="image image_resized" style={{"width":"48.52%"}}>
+  <img src="/img/skewness.jpeg" />
+  <figcaption>چولگی</figcaption>
+</figure>
+```math 
+skewness = \frac{E(X - \mu)^3}{\sigma^3} = \frac{\sum^{n}_{i=1}(x_i-\mu)^{3}P(x_i)}{\sigma^3}
+```
+<h4>
+  گشتاور چهارم استاندارد شده: کشیدگی
+  <br />
+  Kurtosis: Standardized 4nd Central Moment
+</h4>
+<figure className="image">
+  <img src="/img/kurtosis.png" />
+  <figcaption>کشیدگی</figcaption>
+</figure>
+```math
+skewness = \frac{E(X - \mu)^4}{\sigma^4} = \frac{\sum^{n}_{i=1}(x_i-\mu)^{4}P(x_i)}{\sigma^4}
+```

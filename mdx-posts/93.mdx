@@ -1,0 +1,18 @@
+---
+title: "HOF یا Higher Order Function چیست؟"
+date: "2022-05-05T06:52:45.221Z"
+summary: "تابعی که تابع دیگری را به عنوان ورودی می‌گیرد و یا تابعی را به عنوان خروجی بر می‌گرداند."
+tags: ["javascript"]
+category: "تعاریف"
+image: "1399/1/4/f23b1fc5-c3c2-40da-93ba-23dcced40535.jpeg"
+---
+
+<>تابعی که تابع دیگری را به عنوان ورودی می‌گیرد و یا تابعی را به عنوان خروجی بر می‌گرداند.</>
+
+```javascript
+function unary(fn) {
+	return function one(arg) {
+		return fn(arg);
+	}
+}
+```

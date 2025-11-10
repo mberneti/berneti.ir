@@ -1,0 +1,98 @@
+---
+title: "دنیای جاوااسکریپت ۱ - انواع مقدارها یا Values"
+date: "2020-08-14T00:11:14.839Z"
+summary: "جاوااسکریپت شامل ۹ نوع از مقادیر هست که ۷ مورد آن از نوع Primitive و یا اولیه و اصلی و ۲ مورد دیگر که از نوع Object و Function می‌باشند. "
+tags: ["جاوااسکریپ"]
+category: "دنیای جاوااسکریپت"
+image: "1399/5/5/72cc2077-22d7-4ee9-81c5-66623888eeee.PNG"
+---
+
+<figure className="image image_resized" style={{"width":"50.8%"}}>
+<img src="/img/js-30.png" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption>
+</figure>
+
+<>جاوااسکریپت شامل ۹ نوع از مقادیر هست که ۷ مورد آن از در دسته‌ی Primitive و یا اولیه و ۲ مورد دیگر در دسته‌ی Object و Function قرار دارند.</><h4>انواع مقادیر</h4>
+<ol><li>Primitive</li><li>Objects and Functions</li></ol><h4>مقادیر اولیه یا Primitive</h4><>فرق اساسی انواع مقادیر دسته‌ی Primitive&nbsp;با دسته‌ی Objects and Functions در این است که آنها <strong>غیر قابل تغییر هستن</strong> در صورتی که مقادیر موجود در دسته‌ی Objects and Functions قابل ویرایش هستند.</>
+
+<figure className="image image_resized" style={{"width":"61.65%"}}>
+<img src="/img/js-31.png" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption>
+</figure>
+
+<>سعی کنید خروجی مثال زیر را حدس بزنید:</>
+
+```javascript
+let lastName = 'abc';
+lastName[0] = 'i';
+console.log(lastName);
+```
+
+<>خروجی این متد یا نمایش "abc" خواهد بود یا یک پیغام خطا که به فعال بودن <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode?ck_subscriber_id=918984170">strict mode</a> بستگی دارد ولی هرگز "ibc" نمایش داده نخواهد شد به این دلیل که "abc" یک نوع مقدار غیر قابل ویرایش است.</>
+<h4>تناقض؟؟</h4><>نظر شما در رابطه با مثال زیر چیست؟</>
+
+```javascript
+let pet = 'Narwhal';
+pet = 'The Kraken';
+console.log(pet); // "The Kraken"
+```
+
+<>خب شاید با نگاه اول شاید بگید که خب مقدار "Narwhal" به "The Kraken" در این مثال تغییر پیدا کرد اما در حقیقت با عمل انتصاب صرفا متغیر pet به مقدار جدید و مجزای "The Kraken" اشاره می‌کند.<br /><strong>نکته‌: متغیرها برابر با مقادیر نیست و این دو شامل دو مفهوم مجزا هستن. متغیرها صرفا به مقادیر اشاره می‌کنند.</strong></>
+
+<figure className="image image_resized" style={{"width":"58.6%"}}>
+<img src="/img/js-32.gif" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption>
+</figure>
+
+<h4>۱ـ لیست مقادیر اولیه یا Primitive&nbsp;</h4>
+
+<ul><li><strong>Undefined</strong><ul><li>تنها شامل مقدار undefined</li>
+<li>برای نشان دادن نداشتن مقدار بصورت غیر عمدی (کنترل نشده)</li></ul></li><li><strong>Null</strong><ul>
+<li>تنها شامل مقدار null</li><li>برای نشان دادن نداشتن مقدار بصورت عمدی (توسط ما کنترل یا مدیریت شده)</li></ul></li><li>
+<strong>Booleans</strong><ul><li>دو مقدار true و false</li><li>برای استفاده در عملیات منطقی</li></ul></li><li>
+<strong>Numbers</strong><ul><li>بازه‌ای از اعداد (-110, 3.14, ... )</li><li>برای استفاده در محاسبات ریاضی</li>
+<li>در کد زیر مثال‌هایی که موجب تولید مقادیر مختلف نوع number می‌شود آورده شده‌است.</li></ul></li></ul>
+
+```javascript
+let scale = 0;
+let a = 1 / scale; // Infinity
+let b = 0 / scale; // NaN
+let c = -a; // -Infinity
+let d = 1 / c; // -0
+```
+
+<ul><li>انواع رشته‌ها ("asdasd" , "aaa" , ... )</li><li>برای نگهداری نوشته‌ها</li><li><strong>Symbols</strong><ul><li>کاربرد غیرمعمول</li><li>برای پنهانسازی جزئیات پیاده‌سازی</li></ul></li><li><strong>BigInts</strong><ul>
+<li>کاربرد غیر معمول و جدید</li><li>برای استفاده در عملیات ریاضی که نیاز به مقادیر بزرگ در محاسبات دارد</li></ul></li></ul><figure className="image image_resized" style={{"width":"49.94%"}}>
+<img src="/img/js-33.png" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption></figure>
+
+<h4>۲ـ مقادیر غیر اصلی یا همان Functions و Objects</h4><ul><li><strong>Objects</strong><ul>
+<li>{}, [], new Date() و ...</li><li>برای دسته‌بندی کردن یک بخشی از داده‌ها و کدها</li></ul></li><li><strong>Functions</strong><ul><li>برای اشاره به بخشی از کدها</li></ul></li></ul>
+
+<figure className="image image_resized" style={{"width":"37.06%"}}><img src="/img/js-34.png" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption></figure>
+
+<h4><strong>پیدا کردن نوع مقادیر در جاوااسکریپت با استفاده از typeof</strong></h4>
+<>متد typeof در جاوااسکریپ یک مقدار به عنوان ورودی دریافت می‌کند و یک حالت از انواع ۹ حالتی که می‌تواند داشته باشد را بصورت یک رشته برمی‌گرداند، مانند مثال زیر.</>
+
+```js
+typeof(4); // "number"
+```
+
+<h4>باگ جاوااسکریپت در تعیین نوع مقادیر با استفاده از typeof</h4>
+<>به مثال زیر توجه کنید</>
+
+```javascript
+typeof(null); // "object"
+```
+
+<>خروجی متد typeof جاوااسکریپ برای null مقدار "object" است درصورتی که<a href="https://www.ecma-international.org/ecma-262/10.0/#sec-terms-and-definitions-null-type"> null از نوع object نبوده</a> و خودش یک نوع اصلی یا Primitive می‌باشد. (<a href="https://2ality.com/2013/10/typeof-null.html">یک یادداشت از تاریخچه رخ دادن این باگ در جاوااسکریپت</a>) امکان اصلاح این مشکل وجود نداشته به این دلیل که این باگ خیلی قدیمی بوده و رفع اون باعث ایجاد مشکل در وب‌سایتهای زیادی می‌شد.</><>خب حالا نظرتون در رابطه با مثال زیر چیه؟</>
+
+```javascript
+typeof([]); // "object"
+```
+
+<>به نظرتون این هم باگ جاوااسکریپت هست و انتظار داشتین نوع arrays را دریافت کنید؟ اما اینطور نیست آرایه‌ها از نوع‌ها اصلی یا primitive نیستن و بنابراین از نوع object هستن و خروجی این کد صحیح است.</>
+<h4>در جاوااسکریپت هیچ نوع دیگری وجود ندارد</h4>
+<>شاید برای شما سوال پیش بیاید که خب تکلیف انواع دیگه مثل آرایه‌ها چی میشه؟</><>جاوااسکریپت فقط شامل همین ۹ نوع از مقادیر اصلی است که به شرح آن پرداختیم مابقی آن از مثل آرایه و تاریخ و ... از نوع Object به حساب می‌آیند.&nbsp;</>
+
+```js
+console.log(typeof([])); // "object"
+console.log(typeof(new Date())); // "object"
+console.log(typeof(/(hello|goodbye)/)); // "object"
+```

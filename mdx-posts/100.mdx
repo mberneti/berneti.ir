@@ -1,0 +1,28 @@
+---
+title: "جلوگیری از مشکل وضعیت‌های غیر ممکن یا impossible states"
+date: "2023-04-18T07:52:51.390Z"
+summary: "مشکل وضعیت‌های غیر ممکن یا impossible states زمانی اتفاق می‌افتد که فلگ‌هایی ایجاد کنیم که ترکیب برخی از مقادیر آنها شامل حالت‌هایی باشد که هیچ وقت اتفاق نمی‌افتد."
+tags: ["javascript"]
+category: "برنامه‌نویسی"
+image: "null"
+---
+
+<p>
+  مشکل وضعیت‌های غیر ممکن یا impossible states زمانی اتفاق می‌افتد که فلگ‌هایی
+  ایجاد کنیم که ترکیب برخی از مقادیر آنها شامل حالت‌هایی باشد که هیچ وقت اتفاق
+  نمی‌افتد.
+</p>
+<>
+  برای مثال در عکس زیر یک حالت از ۴ حالتی که دو فلگ boolean می‌توانند ایجاد کنند
+  نشان داده شده‌است:
+</>
+<figure className="image image_resized" style={{"width":"72.11%"}}>
+  <img src="/img/i-1.jpeg" />
+</figure>
+<>
+  برای رفع مشکل و حذف impossible state ساخته شده می‌توان از یک status به روش زیر
+  تعریف کرد:
+</>
+<figure className="image image_resized" style={{"width":"71.38%"}}>
+  <img src="/img/i-2.jpeg" />
+</figure>

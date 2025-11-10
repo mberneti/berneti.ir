@@ -1,0 +1,83 @@
+---
+title: "دنیای جاوااسکریپت ۴ - mutate یا تغییر دادن object"
+date: "2020-08-21T18:48:34.791Z"
+summary: "مثال‌هایی از تغییر در object
+object تو در تو وجود ندارد هر کروشه {} نماینده‌ی یک object مجزا و جدید است."
+tags: ["جاوااسکریپ"]
+category: "دنیای جاوااسکریپت"
+image: "1398/12/4/11538888-9e81-4349-8995-04d2c75de4cc.jpeg"
+---
+
+<h4>نکته‌ی اول: object تو در تو وجود ندارد!</h4><>object تو در تو وجود ندارد و هر جفت علامت کروشه {} نشانه‌ی یک آبجکت متمایز و جدید است.</><h4>گام اول: تعریف متغیر sherlock<br />&nbsp;</h4>
+
+```js
+let sherlock = {
+  surname: 'Holmes',
+  address: { city: 'London' }
+};
+```
+
+<figure className="image image_resized" style={{"width":"61.12%"}}><img src="/img/js-10.png" /></figure>
+
+<>بیایید نگاه دقیق‌تری به فرایند شکل گیری این مدل ذهنی داشته باشیم.</><figure className="image image_resized" style={{"width":"62.95%"}}><img src="/img/js-11.gif" /></figure>
+
+<h4>گام دوم: تعریف متغیر sherlock<br />&nbsp;</h4>
+
+```js
+let john = {
+  surname: 'Watson',
+  address: sherlock.address
+};
+```
+
+<>نتیجه مدل ذهنی مثال بالا</>
+<figure className="image image_resized" style={{"width":"55.23%"}}><img src="/img/js-12.png" /></figure>
+
+<>فرایند شکل گیری مدل ذهنی بالا</>
+<figure className="image image_resized" style={{"width":"55.16%"}}><img src="/img/js-13.gif" /></figure>
+
+<h4>نکته‌ی دوم: پراپرتی‌های هر شیئ همیشه به یک مقدار اشاره می‌کنن!</h4><>نکته‌ی دوم پراپرتی‌های هر شیئ همیشه به یک مقدار اشاره می‌کنن نه یک متغیر یا پراپرتی دیگر</>
+
+<figure className="image image_resized" style={{"width":"54.74%"}}><img src="/img/js-14.png" /></figure><h4>گام سوم: ایجاد تغییر در پراپرتی‌ها</h4><>نتیجه کد زیر را با استفاده از مدل ذهنی گام قبلی حدس بزنید.</>
+
+```js
+john.surname = 'Lennon';
+john.address.city = 'Malibu';
+```
+
+<>مدل ذهنی بصورت زیر تغییر می‌کند.</><figure className="image image_resized" style={{"width":"60.58%"}}><img src="/img/js-15.png" /></figure>
+
+```javascript
+console.log(sherlock.surname); // "Holmes"
+console.log(sherlock.address.city); // "Malibu"
+console.log(john.surname); // "Lennon"
+console.log(john.address.city); // "Malibu"
+```
+
+<>نگاه دقیقتر به فرایند اعمال تغییرات</><figure className="image image_resized" style={{"width":"60.01%"}}><img src="/img/js-16.gif" /></figure>
+<>همانطور که مشاهده می‌کنید با تغییر مقدار city آدرس john، مقدار city آدرس sherlock هم عوض می‌شود (صرفا پراپرتی city به یک مقدار دیگر اشاره می‌کند زیرا طبق آنچه آموختیم مقادیر Primitive غیر قابل تغییر هستند.)</><h4>راه حل اول ایجاد شیئ address جدید</h4>
+<>مشکلی که ما در این مرحله با آن روبرو هستیم تغییر آدرس sherlock در زمان تغییر آدرس john است برای این کار با کد زیر می‌توانیم بصورت زیر یک object جدید برای پراپرتی address تعریف کنیم.</>
+
+```js
+// Replace Step 3 with this code:
+john.surname = 'Lennon';
+john.address = { city: 'Malibu' };
+```
+
+<>مدل ذهنی کد بالا</>
+<figure className="image image_resized" style={{"width":"54.61%"}}>
+<img src="/img/js-17.png" /></figure>
+<>همانطور که مشاهده می‌کنید با عملیات انتصاب = به پراپرتی address این پراپرتی به یک آبجکت جدید که با خط نارنجی مشخص شده‌است متصل شد.</>
+<h4>راه حل دوم هیچ تغییری در شیئ john ایجاد نکنیم</h4><>راه حل بعدی این است که برای اینکه متغیر john شامل مقادیر جدیدی باشد با عملیات انتصاب یک شیئ جدید ایجاد کرده و متغیر john را به آن متصل کنیم.</>
+
+```js
+// Replace Step 3 with this code:
+john = {
+  surname: 'Lennon',
+  address: { city: 'Malibu' }
+};
+```
+
+<figure className="image image_resized" style={{"width":"55.8%"}}><img src="/img/js-18.png" /></figure>
+
+<>همانطور که مشاهده می‌کنید آبجکتی که قبلا john به آن متصل بوده که شامل پراپرتی surname که به مقدار &nbsp;"Watson" متصل است و شامل پراپرتی address می‌باشد به حال خود رها شده و با خط جدید نارنجی رنگ به یک مقدار دیگر متصل شده است که ما با عملیات <span className="katex-display"><span className="katex"><span className="katex-html" aria-hidden="true"><span className="base"><span className="strut" style={{"height":"0.8888799999999999em","verticalAlign":"-0.19444em"}}></span><span className="mord mathdefault" style={{"marginRight":"0.05724em"}}>j</span><span className="mord mathdefault">o</span><span className="mord mathdefault">h</span><span className="mord mathdefault">n</span><span className="mspace" style={{"marginRight":"0.2777777777777778em"}}></span><span className="mrel">=</span></span></span></span></span> این کار را انجام دادیم.</>

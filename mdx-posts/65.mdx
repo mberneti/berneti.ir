@@ -1,0 +1,46 @@
+---
+title: "قواعد نامگذاری به سبک PEP 8 در پایتون"
+date: "2020-04-12T14:20:24.197Z"
+summary: "قواعد نامگذاری طبق استاندارد PEP 8 در پایتون"
+tags: []
+category: "پایتون"
+image: "1399/1/4/65a8e462-42f5-46a4-a586-b549a2c8b89f.jpeg"
+---
+
+<figure className="image"><img src="/img/naming.jpeg" />
+<figcaption><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgba(0,0,0,0.6)"}}>Photo by Wes Hicks on Unsplash</span></figcaption>
+</figure>
+
+> PEP 8 راهنمای رسمی و قواعد کدنویسی در پایتون است و پروژه‌های زیادی با رعایت این اصول و این سبک در پایتون نوشته شده‌است. برای مطالعه بیشتر به این لینک می‌توانید مراجعه کنید.
+
+<>&nbsp;</><>&nbsp;</><h4>خلاصه قواعد نامگذاری در PEP 8</h4><>&nbsp;</>
+
+<><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(74,74,74)"}}>۱ـ نام توابع و متغیرها و ماژول‌ها باید بصورت حروف کوچک باشد و هر کلمه می‌تواند با underscore از کلمات دیگر جدا شود.</span></>
+
+```python
+lower_case_with_underscores = 2
+
+def my_function():
+      pass
+
+my_module.py
+```
+
+<>۲ـ نام ثابت‌ها باید با حروف بزرگ نوشته شود و هر کلمه می‌تواند با underscore از کلمات دیگر جدا شود.</>
+
+```python
+GRAVITY_ACCEL =  9.8
+```
+
+<><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(74,74,74)"}}>۳ـ نام کلاس‌ها باید با حروف بزرگ شروع شود و هر کلمه می‌تواند با بزرگ نوشتن حرف اول از بقیه تفکیک شود.</span></>
+
+```python
+MyTestClass
+```
+
+
+<><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(74,74,74)"}}>۴ـ نام پکیج‌ها باید با حروف کوچک باشد و</span><strong> نباید برای تفکیک کلمات آن از حروف بزرگ و یا underscore استفاده شود.</strong></>
+
+```python
+mypackage
+```

@@ -1,0 +1,5 @@
+apps:
+  - name: nextjs-app
+    script: server.js
+    instances: "max" # Use maximum number of available CPUs
+    exec_mode: cluster # Enable PM2 cluster mode

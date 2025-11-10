@@ -1,0 +1,21 @@
+services:
+  b-blog-server:
+    ports:
+      - "3030:3030"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: b-blog-server
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.b-blog-server.rule=Host(`berneti.ir`,`www.berneti.ir`)"
+      - "traefik.http.routers.b-blog-server.entrypoints=web, websecure"
+      - "traefik.http.routers.b-blog-server.tls.certresolver=myresolver"
+      - "traefik.http.routers.b-blog-server.middlewares=redirect-to-https,redirect-to-www"
+    networks:
+      - traefik_default
+
+networks:
+  traefik_default:
+    external: true

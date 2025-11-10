@@ -1,0 +1,38 @@
+{
+  "typescript.validate.enable": true,
+  "javascript.validate.enable": true,
+  "markdown.extension.toc.updateOnSave": false,
+  "files.exclude": {
+    // "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "node_modules/": true
+  },
+  "path-intellisense.mappings": {
+    "@/": "${workspaceFolder}/src"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+  "editor.quickSuggestionsDelay": 0,
+  "cSpell.words": [
+    "bejet",
+    "digikalajet",
+    "lcov",
+    "persistor",
+    "secops",
+    "spritetext",
+    "superapp"
+  ],
+  "editor.formatOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "typescriptreact",
+    "typescript"
+  ],
+  "livePreview.defaultPreviewPath": "/build/client/index.html"
+}

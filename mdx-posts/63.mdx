@@ -1,0 +1,189 @@
+---
+title: "داده کاوی - ۳ - جزئیات دیتاست‌ها"
+date: "2020-04-12T13:21:34.666Z"
+summary: "شرح جزئیات داده‌های خامی که در قسمت‌های آتی از آنها استفاده می‌شود"
+tags: ["داده کاوی", "پایتون"]
+category: "داده کاوی در پایتون"
+image: "1399/1/4/318b537c-d5a0-4f9c-a054-bf2091632d8f.jpg"
+---
+
+<>در این قسمت چند مجموعه از داده‌های اولیه را برای استفاده در مسائل آتی مشخص می‌کنیم.</><>‍۱ـ مجموعه‌ی امتیازات بین ۰ تا ۵ افراد به دو فیلم در قالب یک فایل json با نام <strong>movieratings_simple.json</strong></><figure className="image">
+<img src="/img/movies_ratings.png" /><figcaption>&nbsp;<strong>movieratings_simple.json</strong></figcaption></figure>
+
+
+```json
+{
+  "saeed": {
+    "Forrest Gump": 3,
+    "Fight Club": 1
+  },
+  "abbas": {
+    "Forrest Gump": 5,
+    "Fight Club": 2
+  },
+  "mahdi": {
+    "Forrest Gump": 4,
+    "Fight Club": 1
+  },
+  "hasan": {
+    "Forrest Gump": 4,
+    "Fight Club": 5
+  },
+  "alireza": {
+    "Forrest Gump": 5,
+    "Fight Club": 3
+  }
+}
+```
+
+<>&nbsp;</>
+
+<>‍۲ـ مجموعه‌ی امتیازات بین ۰ تا ۵ افراد به فیلم‌های مختلف در قالب یک فایل json با نام <strong>movieratings.json</strong></>
+
+```json
+ {
+  "saeed": {
+    "The Shawshank Redemption": 4,
+    "Forrest Gump": 4,
+    "Interstellar": 5,
+    "Memento": 0,
+    "The Dark Knight": 2,
+    "Fight Club": 3,
+    "Léon: The Professional": 3
+  },
+  "mahdi": {
+    "The Shawshank Redemption": 5,
+    "Forrest Gump": 4,
+    "Interstellar": 4,
+    "The Dark Knight": 4,
+    "Hangover": 5,
+    "Fight Club": 0,
+    "Léon: The Professional": 2,
+    "The Intouchables": 5
+  },
+  "abbas": {
+    "The Shawshank Redemption": 5,
+    "Forrest Gump": 5,
+    "Interstellar": 4,
+    "Inception": 4,
+    "Fight Club": 3,
+    "Léon: The Professional": 4
+  },
+  "hasan": {
+    "The Shawshank Redemption": 3,
+    "Forrest Gump": 3,
+    "Interstellar": 5,
+    "Inception": 4,
+    "The Dark Knight": 5,
+    "Hangover": 4,
+    "Fight Club": 5
+  },
+  "alireza": {
+    "The Shawshank Redemption": 3,
+    "Forrest Gump": 3,
+    "Interstellar": 0,
+    "Inception": 1,
+    "The Dark Knight": 5,
+    "Hangover": 3,
+    "Fight Club": 0,
+    "The Intouchables": 5
+  }
+}
+```
+
+<>&nbsp;</>
+
+<>‍۳ـ مجموعه‌ی امتیازات بین ۰ تا ۵ و یا حالت خالی و ثبت نشده‌ی افراد به فیلم‌های مختلف در قالب یک فایل json با نام <strong>ratings_sparseness.json</strong></>
+
+```json
+{
+  "saeed": { 
+    "m1": 4,
+    "m2": 2,
+    "m3": 5,
+    "m4": "-",
+    "m5": 2,
+    "m6": 3,
+    "m7": 4,
+    "m8": 5,
+    "m9": "-",
+    "m10": "-"
+  },
+  "abbas": {
+    "m1": 3,
+    "m2": "-",
+    "m3": 4,
+    "m4": 2,
+    "m5": "-",
+    "m6": "-",
+    "m7": "-",
+    "m8": "-",
+    "m9": "-",
+    "m10": "-"
+  },
+  "alireza": {
+    "m1": 3,
+    "m2": "-",
+    "m3": 4,
+    "m4": 5,
+    "m5": 2,
+    "m6": 3,
+    "m7": 4,
+    "m8": 5,
+    "m9": 5,
+    "m10": 5
+  }
+}
+```
+    
+    <>&nbsp;</>
+    
+    <>۴ـ مجموعه‌ی امتیازات بین ۰ تا ۵ افراد به فیلم‌های مختلف در قالب یک فایل json با نام <strong>ratings_grade_inflation.json</strong></>
+    
+```json
+{
+  "saeed": {
+    "m1": 3,
+    "m2": 1,
+    "m3": 4,
+    "m4": 2
+  },
+  "abbas": {
+    "m1": 2,
+    "m2": 3,
+    "m3": 3,
+    "m4": 4
+  },
+  "alireza": {
+    "m1": 4.5,
+    "m2": 4,
+    "m3": 5,
+    "m4": 4.25
+  }
+}
+```
+
+<>۵ـ مجموعه‌ی امتیازات بین ۰ تا ۵ افراد به فیلم‌های مختلف در قالب یک فایل<strong> ratings_grade_inflation2.json</strong></>
+
+```json
+{
+  "saeed": {
+    "m1": 1,
+    "m2": 2,
+    "m3": 3,
+    "m4": 4
+  },
+  "abbas": {
+    "m1": 2,
+    "m2": 3,
+    "m3": 2,
+    "m4": 3
+  },
+  "alireza": {
+    "m1": 4.5,
+    "m2": 4.65,
+    "m3": 4.8,
+    "m4": 5
+  }
+}
+```

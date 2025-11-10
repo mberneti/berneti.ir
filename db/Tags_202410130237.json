@@ -1,0 +1,195 @@
+{
+"Tags": [
+	{
+		"Id" : 1,
+		"Name" : "داده کاوی"
+	},
+	{
+		"Id" : 2,
+		"Name" : "پایتون"
+	},
+	{
+		"Id" : 3,
+		"Name" : "یادگیری ماشین"
+	},
+	{
+		"Id" : 4,
+		"Name" : "شباهت"
+	},
+	{
+		"Id" : 5,
+		"Name" : "جاوااسکریپ"
+	},
+	{
+		"Id" : 6,
+		"Name" : "Prototypes"
+	},
+	{
+		"Id" : 7,
+		"Name" : "Recall"
+	},
+	{
+		"Id" : 8,
+		"Name" : "Precision"
+	},
+	{
+		"Id" : 9,
+		"Name" : "f1-score"
+	},
+	{
+		"Id" : 10,
+		"Name" : "معیارهای ارزیابی"
+	},
+	{
+		"Id" : 11,
+		"Name" : "js"
+	},
+	{
+		"Id" : 12,
+		"Name" : "javascript"
+	},
+	{
+		"Id" : 13,
+		"Name" : "آموزش برنامه‌نوسی جاوااسکریپت"
+	},
+	{
+		"Id" : 14,
+		"Name" : "Micro Avg Precision"
+	},
+	{
+		"Id" : 15,
+		"Name" : "Micro Avg Recall"
+	},
+	{
+		"Id" : 16,
+		"Name" : "Macro Avg Recall"
+	},
+	{
+		"Id" : 17,
+		"Name" : "Macro Avg Precision"
+	},
+	{
+		"Id" : 18,
+		"Name" : "آمار"
+	},
+	{
+		"Id" : 19,
+		"Name" : "توزیع یکنواخت"
+	},
+	{
+		"Id" : 20,
+		"Name" : "توزیع نرمال"
+	},
+	{
+		"Id" : 21,
+		"Name" : "uniform distribution"
+	},
+	{
+		"Id" : 22,
+		"Name" : "normal distribution"
+	},
+	{
+		"Id" : 23,
+		"Name" : "قضیه حد مرکزی"
+	},
+	{
+		"Id" : 24,
+		"Name" : "شاخص‌های تمرکز"
+	},
+	{
+		"Id" : 25,
+		"Name" : "شاخص‌های پارکندگی"
+	},
+	{
+		"Id" : 26,
+		"Name" : "میانگین هندسی"
+	},
+	{
+		"Id" : 27,
+		"Name" : "میانگین حسابی"
+	},
+	{
+		"Id" : 28,
+		"Name" : "میانگین هارمونیک"
+	},
+	{
+		"Id" : 29,
+		"Name" : "واریانس"
+	},
+	{
+		"Id" : 30,
+		"Name" : "ممان"
+	},
+	{
+		"Id" : 31,
+		"Name" : "امید ریاضی"
+	},
+	{
+		"Id" : 32,
+		"Name" : "انحراف معیار"
+	},
+	{
+		"Id" : 33,
+		"Name" : "چولگی"
+	},
+	{
+		"Id" : 34,
+		"Name" : "گشتاور"
+	},
+	{
+		"Id" : 1034,
+		"Name" : "تایپ اسکریپت"
+	},
+	{
+		"Id" : 1035,
+		"Name" : "typescript"
+	},
+	{
+		"Id" : 1036,
+		"Name" : "functional programming"
+	},
+	{
+		"Id" : 1037,
+		"Name" : "race condition"
+	},
+	{
+		"Id" : 1038,
+		"Name" : "immutability"
+	},
+	{
+		"Id" : 1039,
+		"Name" : "Create \"declarative\""
+	},
+	{
+		"Id" : 1040,
+		"Name" : "imperative"
+	},
+	{
+		"Id" : 1041,
+		"Name" : "higher order functions"
+	},
+	{
+		"Id" : 1042,
+		"Name" : "function composition"
+	},
+	{
+		"Id" : 1043,
+		"Name" : "طرز فکر"
+	},
+	{
+		"Id" : 1044,
+		"Name" : "کسب و کار"
+	},
+	{
+		"Id" : 1045,
+		"Name" : "رهبری"
+	},
+	{
+		"Id" : 1046,
+		"Name" : "تعاریف"
+	},
+	{
+		"Id" : 1047,
+		"Name" : "Create \"reactjs\""
+	}
+]}

@@ -1,0 +1,66 @@
+---
+title: "آداپتور flip و reverse و spreadArgs"
+date: "2022-05-05T08:16:58.393Z"
+summary: "null"
+tags: ["javascript"]
+category: "Functional Programming"
+image: "1399/1/4/4dedf440-6121-41ed-bf3d-53fe909732ba.png"
+---
+
+<h4>آداپتور flip</h4><>جای دو ورودی اول تابع مورد نظر را عوض می‌کند.</>
+
+```javascript
+function flip(fn) {
+	return function flipped(arg1,arg2,...args){
+		return fn(arg2,arg1,...args);
+	}
+}
+
+function f(...args) {
+	return args;
+}
+
+let g = flip(f);
+
+g(1,2,3,4);		// [2,1,3,4]
+```
+
+<h4>آداپتور reverse</h4>
+<>ترتیب ورودی‌های تابع مورد نظر را برعکس می‌کند.</>
+
+
+```javascript
+function reverseArgs(fn) {
+	return function reversed(...args){
+		return fn(...args.reverse());
+	}
+}
+
+function f(...args) {
+	return args;
+}
+
+let g = reverseArgs(f);
+
+g(1,2,3,4);		// [4,3,2,1]
+```
+
+<h4>آداپتور spread</h4><>ورودی‌های تابع مورد نظر را تبدیل به یک لیست می‌کند.</>
+
+```javascript
+function spreadArgs(fn) {
+	return function spread(args){
+		return fn(...args);
+	}
+}
+
+function f(x,y,z,w) {
+	return x + y + z + w;
+}
+
+let g = spreadArgs(f);
+
+g([1,2,3,4]);		// 10
+```
+
+<h4>آداپتور&nbsp;</h4><>ورودی‌های تابع مورد نظر را تبدیل به یک لیست می‌کند.</>

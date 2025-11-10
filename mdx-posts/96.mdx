@@ -1,0 +1,35 @@
+---
+title: "آداپتورها"
+date: "2022-05-05T07:52:30.819Z"
+summary: "null"
+tags: ["javascript", "تعاریف"]
+category: "Functional Programming"
+image: "1399/1/4/3ecd6a36-d8d9-45a4-bd43-0cc96351459f.png"
+---
+
+<>آداپتورها توابع مرتبه‌ی بالایی (<a className="mention" data-mention="/HOF یا Higher Order Function چیست؟" data-title="HOF یا Higher Order Function چیست؟" href="https://www.berneti.ir/93/hof-%DB%8C%D8%A7-higher-order-function-%DA%86%DB%8C%D8%B3%D8%AA%D8%9F">HOF یا Higher Order Function چیست؟</a>) هستند شکل توابع (<a className="mention" data-mention="/تابع unary و binary و ternary و n-ary چیست؟" data-title="تابع unary و binary و ternary و n-ary چیست؟" href="https://www.berneti.ir/94/%D8%AA%D8%A7%D8%A8%D8%B9-unary-%D9%88-binary-%D9%88-ternary-%D9%88-n-ary-%DA%86%DB%8C%D8%B3%D8%AA%D8%9F">تابع unary و binary و ternary و n-ary چیست؟</a>) را یکسان می‌کنند.</>
+<>برای مثال در قطعه کد زیر آداپتورهای unary و binary تابعی مانند f که تعداد نامشخصی از ورودی‌ها را می‌پذیرد (Variadic Fucntion هستند) را تبدیلش می‌کند به تابعی به شکل unary و binary که تنها یک و دو ورودی به ترتیب می‌گیرند.</>
+
+```javascript
+function uanry(fn) {
+	return function one(arg){
+		return fn(arg);
+	}
+}
+
+function vinary(fn) {
+	return function two(arg1,arg2){
+		return fn(arg1,arg2);
+	}
+}
+
+function f(...args) {
+	return args;
+}
+
+let g = unary(f);
+let h = binary(f);
+
+g(1,2,3,4);		// [1]
+h(1,2,3,4);		// [1,2]
+```
