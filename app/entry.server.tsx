@@ -13,6 +13,22 @@ export default function handleRequest(
   routerContext: EntryContext,
   _loadContext: AppLoadContext
 ) {
+  // Redirect root domain to www subdomain
+  const url = new URL(request.url);
+  const hostname = url.hostname;
+
+  if (hostname === 'berneti.ir') {
+    url.hostname = 'www.berneti.ir';
+    return Promise.resolve(
+      new Response(null, {
+        status: 301,
+        headers: {
+          Location: url.toString(),
+        },
+      })
+    );
+  }
+
   return new Promise((resolve, reject) => {
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
