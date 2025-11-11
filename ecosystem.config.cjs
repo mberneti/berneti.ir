@@ -2,8 +2,8 @@ module.exports = {
   apps: [
     {
       name: "react-router-app",
-      script: "npx",
-      args: "react-router-serve ./build/server/index.js",
+      script: "node",
+      args: "server.js",
       instances: 1,
       exec_mode: "fork",
       env: {

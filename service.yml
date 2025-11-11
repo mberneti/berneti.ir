@@ -1,0 +1,67 @@
+configmap:
+  configmapItems:
+    nginx-config:
+      path: /etc/nginx/conf.d
+      value:
+        nginx.conf: |-
+          # NGINX Config - Last Updated: 2025-11-11
+          # This config redirects berneti.ir -> www.berneti.ir
+
+          # Redirect root domain to www
+          server {
+            listen 8008;
+            server_name berneti.ir;
+
+            # Add a test header to verify config is loaded
+            add_header X-Redirect-Config "active" always;
+
+            return 301 $scheme://www.berneti.ir$request_uri;
+          }
+
+          # Main server block
+          server {
+            listen 8008;
+            server_name www.berneti.ir localhost;
+
+            # Add a test header to verify config is loaded
+            add_header X-Main-Config "active" always;
+
+            # Serve and display all files within /app directory with autoindex
+            location /app/ {
+              alias /;
+              autoindex on;
+              autoindex_exact_size off;
+              autoindex_localtime on;
+            }
+
+            location ^~ /_next/static/ {
+              alias /app/next_static/;
+              expires 1y;
+              access_log off;
+              add_header Cache-Control "public, max-age=31536000, immutable";
+            }
+
+            # Route for static files with specific extensions to be served from /app/public
+            location ~* \.(.*) {
+              root /app/public;
+              try_files $uri $uri/ =404;
+              access_log off;
+              expires 1y;
+              add_header Cache-Control "public, max-age=31536000, immutable";
+            }
+
+            # Test endpoint to verify nginx config
+            location /hello {
+              default_type text/plain;
+              return 200 "Hello from NGINX! Config is working.\nTimestamp: $time_local\n";
+            }
+
+            location / {
+              proxy_pass http://nextjs_app:3030;
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection 'upgrade';
+              proxy_set_header Host $host;
+              proxy_cache_bypass $http_upgrade;
+            }
+          }
