@@ -58,38 +58,41 @@ RUN addgroup -g 1001 -S nodejs && \
 # Copy the built app from previous stage
 COPY --from=app --chown=reactrouter:nodejs /app /app
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 # Remove default nginx config
-RUN rm -f /etc/nginx/conf.d/default.conf /etc/nginx/sites-enabled/default
+RUN rm -f /etc/nginx/conf.d/default.conf
 
-# Copy custom nginx config
+# Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/app.conf
-
-# Create supervisor configuration
-RUN echo '[supervisord]' > /etc/supervisord.conf && \
-    echo 'nodaemon=true' >> /etc/supervisord.conf && \
-    echo 'user=root' >> /etc/supervisord.conf && \
-    echo '' >> /etc/supervisord.conf && \
-    echo '[program:app]' >> /etc/supervisord.conf && \
-    echo 'command=pm2-runtime start /app/ecosystem.config.cjs' >> /etc/supervisord.conf && \
-    echo 'directory=/app' >> /etc/supervisord.conf && \
-    echo 'user=reactrouter' >> /etc/supervisord.conf && \
-    echo 'autostart=true' >> /etc/supervisord.conf && \
-    echo 'autorestart=true' >> /etc/supervisord.conf && \
-    echo 'stdout_logfile=/var/log/supervisor/app.log' >> /etc/supervisord.conf && \
-    echo 'stderr_logfile=/var/log/supervisor/app_err.log' >> /etc/supervisord.conf && \
-    echo '' >> /etc/supervisord.conf && \
-    echo '[program:nginx]' >> /etc/supervisord.conf && \
-    echo 'command=nginx -g "daemon off;"' >> /etc/supervisord.conf && \
-    echo 'autostart=true' >> /etc/supervisord.conf && \
-    echo 'autorestart=true' >> /etc/supervisord.conf && \
-    echo 'stdout_logfile=/var/log/supervisor/nginx.log' >> /etc/supervisord.conf && \
-    echo 'stderr_logfile=/var/log/supervisor/nginx_err.log' >> /etc/supervisord.conf
 
 # Install PM2 for running the app
 RUN npm install -g pm2@latest
+
+# Create supervisor configuration to run both nginx and the app
+RUN printf '[supervisord]\n\
+nodaemon=true\n\
+user=root\n\
+logfile=/var/log/supervisor/supervisord.log\n\
+pidfile=/var/run/supervisord.pid\n\
+\n\
+[program:app]\n\
+command=pm2-runtime start /app/ecosystem.config.cjs\n\
+directory=/app\n\
+user=reactrouter\n\
+autostart=true\n\
+autorestart=true\n\
+stdout_logfile=/dev/stdout\n\
+stdout_logfile_maxbytes=0\n\
+stderr_logfile=/dev/stderr\n\
+stderr_logfile_maxbytes=0\n\
+\n\
+[program:nginx]\n\
+command=nginx -g "daemon off;"\n\
+autostart=true\n\
+autorestart=true\n\
+stdout_logfile=/dev/stdout\n\
+stdout_logfile_maxbytes=0\n\
+stderr_logfile=/dev/stderr\n\
+stderr_logfile_maxbytes=0\n' > /etc/supervisord.conf
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
