@@ -7,6 +7,7 @@ import { APP_CONFIG } from "@/app-config";
 import "@/app/fontiran.css";
 import "@/app/global.css";
 import "highlight.js/styles/github-dark.css";
+import "katex/dist/katex.min.css";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -34,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="antialiased max-w-xl mx-auto h-full bg-midnight text-textMain">
+      <body className="antialiased max-w-3xl mx-auto h-full bg-midnight text-textMain">
         {children}
         <ScrollRestoration />
         <Scripts />

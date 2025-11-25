@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-5xl {
+    line-height: 1.2;
+  }
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0f1e;
@@ -102,23 +108,23 @@ html {
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-6 text-neutral-300 leading-relaxed text-lg;
 }
 
 .prose h1 {
-  @apply text-4xl font-bold tracking-tight mt-6 mb-2;
+  @apply text-4xl font-bold tracking-tight mt-12 mb-4;
 }
 
 .prose h2 {
-  @apply text-xl font-bold tracking-tight mt-6 mb-2;
+  @apply text-2xl font-bold tracking-tight mt-10 mb-4 text-neutral-200;
 }
 
 .prose h3 {
-  @apply text-xl font-bold tracking-tight mt-6 mb-2;
+  @apply text-xl font-bold tracking-tight mt-8 mb-3 text-neutral-200;
 }
 
 .prose h4 {
-  @apply text-lg font-bold tracking-tight mt-6 mb-2;
+  @apply text-lg font-bold tracking-tight mt-8 mb-3 text-accent;
 }
 
 .prose > strong,
@@ -127,14 +133,14 @@ html {
   &::before {
     content: "";
     display: inline-block;
-    width: calc(100% + 4px);
-    height: calc(80%);
-    @apply bg-accent bg-opacity-10 absolute bottom-0 -left-[2px] translate-x-[8px] translate-y-[2px];
+    width: calc(100% + 6px);
+    height: 60%;
+    @apply bg-accent bg-opacity-10 absolute bottom-0 -left-[2px] translate-x-1 translate-y-0;
     @apply transition-transform duration-[350ms] ease-[cubic-bezier(0.25,0.1,0,2.05)];
   }
 
   &:hover::before {
-    @apply translate-x-0 translate-y-0;
+    @apply translate-x-0 -translate-y-2;
   }
 }
 
@@ -155,11 +161,23 @@ html {
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 space-y-3;
+}
+
+.prose ul li {
+  @apply text-neutral-300 leading-relaxed;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 space-y-3;
+}
+
+.prose ol li {
+  @apply text-neutral-300 leading-relaxed pl-2;
+}
+
+.prose li::marker {
+  @apply text-accent;
 }
 
 pre::-webkit-scrollbar {
@@ -202,15 +220,16 @@ article.prose {
   figcaption {
     @apply text-center font-thin text-sm py-1;
   }
-  figure > img {
-    @apply mt-4;
-  }
   figure > pre > code {
     @apply overflow-y-auto;
   }
 
   figure > pre {
     @apply max-sm:text-[.7rem] px-0 rounded-none border-none;
+  }
+
+  figure.image {
+    @apply mt-4;
   }
 
   figure {
@@ -234,10 +253,12 @@ article.prose {
     direction: ltr;
   }
   .katex-display {
+    overflow-y: hidden;
+    overflow-x: auto;
     direction: ltr;
-  }
-  figure {
-    margin: 1.5rem auto;
+    .katex-html > .newline {
+      height: 1.5rem;
+    }
   }
   pre::after {
     content: attr(data-language);

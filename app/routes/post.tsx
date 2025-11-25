@@ -63,31 +63,41 @@ export default function PostPage({ loaderData }: Route.ComponentProps) {
   const { title, date: publishedTime } = post.metadata;
 
   return (
-    <section>
-      <h1 className="title font-semibold text-2xl tracking-tighter">{title}</h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+    <section className="w-full">
+      <h1 className="title font-bold text-3xl md:text-4xl tracking-tight leading-tight mb-3">
+        {title}
+      </h1>
+      <div className="flex justify-between items-center mb-12 text-sm">
+        <p className="text-sm text-neutral-500 dark:text-neutral-500">
           {formatDate(publishedTime)}
         </p>
       </div>
-      <article className="prose bg-[#1b1b1b99]">
+      <article className="prose prose-lg">
         <CustomMDX source={post.content} />
       </article>
-      <h4 className="mt-14 mb-4 font-bold text-l">
-        فهرست مطالب « {post.metadata.category} »
-      </h4>
-      <ul className="flex-col space-y-2">
-        {posts
-          .filter((p) => p.metadata.category === post.metadata.category)
-          .map((p) => (
-            <li key={p.id} className="flex justify-start items-baseline">
-              <div className="h-[2px] w-3 ml-2 block bg-gradient-to-l from-subText from-50% shrink-0"></div>
-              <Link to={urls.post(p.id, p.slug)} className="text-text text-sm">
-                {p.metadata.title}
-              </Link>
-            </li>
-          ))}
-      </ul>
+      <div className="mt-16 pt-8 border-t border-neutral-800">
+        <h4 className="mb-6 font-bold text-xl text-neutral-300">
+          فهرست مطالب « {post.metadata.category} »
+        </h4>
+        <ul className="flex-col space-y-3">
+          {posts
+            .filter((p) => p.metadata.category === post.metadata.category)
+            .map((p) => (
+              <li
+                key={p.id}
+                className="flex justify-start items-baseline group"
+              >
+                <div className="h-[2px] w-3 ml-2 block bg-gradient-to-l from-accent/50 group-hover:from-accent shrink-0 transition-colors"></div>
+                <Link
+                  to={urls.post(p.id, p.slug)}
+                  className="text-neutral-300 hover:text-accent text-base transition-colors"
+                >
+                  {p.metadata.title}
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </div>
     </section>
   );
 }

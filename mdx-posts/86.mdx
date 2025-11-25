@@ -7,8 +7,8 @@ category: "تایپ اسکریپت"
 image: "1398/12/4/0e1890ee-eaea-4d1b-8269-fb786fffafe6.png"
 ---
 
-<>دلیل خطای Object literal may only specify known properties تایپ اسکریپت بررسی وجود Property اضافی است تا مانع از پذیرش آن شود، در این مطلب به دو حالت مختلف تفسیر Interface در تایپ اسکریپت اشاره می‌کنیم و سپس راه حل‌های مختلف حل این مشکل را معرفی می‌کنیم.</><>&nbsp;</>
-<h4>Excess Property Checks یا بررسی پراپرتی اضافی</h4><>مثال زیر را به عنوان Interface و متد زیر را در نظر بگیرید.</>
+<p>دلیل خطای Object literal may only specify known properties تایپ اسکریپت بررسی وجود Property اضافی است تا مانع از پذیرش آن شود، در این مطلب به دو حالت مختلف تفسیر Interface در تایپ اسکریپت اشاره می‌کنیم و سپس راه حل‌های مختلف حل این مشکل را معرفی می‌کنیم.</p><p>&nbsp;</p>
+<h4>Excess Property Checks یا بررسی پراپرتی اضافی</h4><p>مثال زیر را به عنوان Interface و متد زیر را در نظر بگیرید.</p>
 
 ```typescript
 interface Point {
@@ -18,12 +18,12 @@ interface Point {
 function computeDistance(point: Point) { /*...*/ }
 ```
 
-<>دو حالت مختلف کلی را برای شیوه‌ی تفسیر این interface در تایپ اسکریپت تصور کرد:</>
+<p>دو حالت مختلف کلی را برای شیوه‌ی تفسیر این interface در تایپ اسکریپت تصور کرد:</p>
 
-<>
+<p>
 <strong>۱ـ تفسیر بسته یا </strong><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>
 <strong>Closed interpretation: </strong>در این حالت هر object که دقیقا شامل پراپرتی‌های اینترفیس هستن قابل قبول‌اند که در این بین پراپرتی که الزامی نیست مثل y در مثال بالا می‌تواند حضور داشته باشد یا خیر اما وجود x الزامی است و درصورت وجود یک پراپرتی اضافی (Excess Property) مثل z با خطا روبرو خواهیم شد.</span>
-</>
+</p>
 
 <div className="gatsby-highlight" data-language="typescript">
 <pre className="language-typescript">
@@ -45,15 +45,15 @@ computeDistance({ x: 1, y: 2, z: 3 });
 ```
 
 
-<><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>۲ـ تفسیر باز یا <strong>Opened interpretation: </strong>در این حالت کافیست یک شیئ دارای یک زیر مجموعه‌ای از اینترفیس مورد نظر باشد برای مثال آبجکتی شامل پراپرتی x و z در این حالت قابل قبول هست چون دارای پراپرتی‌های الزامی اینترفیس Point است و از طرفی دیگر داشتن پراپرتی اضافی z مانند مثال قبل در این حالت باعت ایجاد خطا نمی‌شود و پذیرفته‌است.</span></>
+<p><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>۲ـ تفسیر باز یا <strong>Opened interpretation: </strong>در این حالت کافیست یک شیئ دارای یک زیر مجموعه‌ای از اینترفیس مورد نظر باشد برای مثال آبجکتی شامل پراپرتی x و z در این حالت قابل قبول هست چون دارای پراپرتی‌های الزامی اینترفیس Point است و از طرفی دیگر داشتن پراپرتی اضافی z مانند مثال قبل در این حالت باعت ایجاد خطا نمی‌شود و پذیرفته‌است.</span></p>
 
 ```typescript
 const obj = { x: 1, z: 3 };
 computeDistance(obj); // OK
 ```
 
-<h4>Excess Property Checks یا بررسی پراپرتی اضافی چه کمکی می‌کند؟</h4><>زمانی که ورودی یک متد را با یک متغیر که بصورت‌های مختلف در برنامه ایجاد می‌شود مقداردهی می‌کنیم <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}><strong>Opened interpretation</strong> رخ می‌دهد و بررسی وجود پراپرتی اضافی بررسی نمی‌شود ولی در حالتی که خودمان بصورت یک Object literal به عنوان ورودی تابع در نظر می‌گیریم 
-<strong>Closed interpretation</strong> رخ می‌دهد و اگر در زمان نوشتن پراپرتی‌های آبجکت خطای تایپی رخ دهد که در این حالت احتمال بیشتری دارد تایپ اسکریپت آن را به عنوان یک پراپرتی اضافی در نظر گرفته و هشدار می‌دهد.</span><br /><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>مثال زیر را در نظر بگیرید:</span></>
+<h4>Excess Property Checks یا بررسی پراپرتی اضافی چه کمکی می‌کند؟</h4><p>زمانی که ورودی یک متد را با یک متغیر که بصورت‌های مختلف در برنامه ایجاد می‌شود مقداردهی می‌کنیم <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}><strong>Opened interpretation</strong> رخ می‌دهد و بررسی وجود پراپرتی اضافی بررسی نمی‌شود ولی در حالتی که خودمان بصورت یک Object literal به عنوان ورودی تابع در نظر می‌گیریم 
+<strong>Closed interpretation</strong> رخ می‌دهد و اگر در زمان نوشتن پراپرتی‌های آبجکت خطای تایپی رخ دهد که در این حالت احتمال بیشتری دارد تایپ اسکریپت آن را به عنوان یک پراپرتی اضافی در نظر گرفته و هشدار می‌دهد.</span><br /><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>مثال زیر را در نظر بگیرید:</span></p>
 
 ```typescript
 interface Person {
@@ -64,7 +64,7 @@ interface Person {
 function computeFullName(person: Person) { /*...*/ }
 ```
 
-<>فرض کنید بصورت زیر و به روش Object literal می‌خواستیم ورودی تابع computeFullName را مقداردهی کنیم ولی بجای middle به اشتباه mdidle تایپ کردیم.</>
+<p>فرض کنید بصورت زیر و به روش Object literal می‌خواستیم ورودی تابع computeFullName را مقداردهی کنیم ولی بجای middle به اشتباه mdidle تایپ کردیم.</p>
 
 ```typescript
 computeFullName({first: 'Jane', mdidle: 'Cecily', last: 'Doe'});
@@ -73,30 +73,30 @@ computeFullName({first: 'Jane', mdidle: 'Cecily', last: 'Doe'});
 ```
 
 
-<>همین طور که مشاهده می‌کنید به لطف وجود <a href="https://www.typescriptlang.org/docs/handbook/interfaces.html#excess-property-checks">Excess Property Checks</a> در تایپ اسکریپت این هشدار واضح را مبنی بر اینکه احتمالا اشتباهاً بجای `middle` عبارت `mdidle` را تایپ کردیم نمایش داده می‌شود.</>
+<p>همین طور که مشاهده می‌کنید به لطف وجود <a href="https://www.typescriptlang.org/docs/handbook/interfaces.html#excess-property-checks">Excess Property Checks</a> در تایپ اسکریپت این هشدار واضح را مبنی بر اینکه احتمالا اشتباهاً بجای `middle` عبارت `mdidle` را تایپ کردیم نمایش داده می‌شود.</p>
 
 <h4>روشهای جلوگیری از بررسی وجود پراپرتی‌های اضافی</h4>
-<>۱ـ استفاده از یک متغیر واسط برای مقداردهی به متد یک تابع</>
+<p>۱ـ استفاده از یک متغیر واسط برای مقداردهی به متد یک تابع</p>
 
 ```typescript
 const obj = { x: 1, y: 2, z: 3 };
 computeDistance1(obj);
 ```
 
-<>۲ـ استفاده از <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>type assertion بصورت زیر</span></>
+<p>۲ـ استفاده از <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>type assertion بصورت زیر</span></p>
 
 ```typescript
 computeDistance1({ x: 1, y: 2, z: 3 } as Point); // OK
 ```
 
-<>۳ـ بازنویسی متد <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>computeDistance1 و استفاده از یک type parameter</span></>
+<p>۳ـ بازنویسی متد <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>computeDistance1 و استفاده از یک type parameter</span></p>
 
 ```typescript
 function computeDistance2<P extends Point>(point: P) { /*...*/ }
 computeDistance2({ x: 1, y: 2, z: 3 }); // OK
 ```
 
-<>۴ـ بازنویسی اینترفیس Point&nbsp;با اضافه کردن یک Index signature بصورت زیر برای اینکه پراپرتی‌های اضافی را بپذیرد</>
+<p>۴ـ بازنویسی اینترفیس Point&nbsp;با اضافه کردن یک Index signature بصورت زیر برای اینکه پراپرتی‌های اضافی را بپذیرد</p>
 
 ```typescript
 interface Person {
@@ -108,8 +108,8 @@ interface Person {
 }
 ```
 
-<>در ادامه یک مثالی را بررسی می‌کنیم که Excess Property Checks تایپ اسکریپت مشکل ایجاد می‌کند.</><>در مثال زیر می‌خواهیم <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>
-Incrementor را پیاده‌سازی کنیم ولی تایپ اسکریپت اجازه‌ی اضافه کردن یک پراپرتی جدید به عنوان counter را نمی‌دهد.</span></>
+<p>در ادامه یک مثالی را بررسی می‌کنیم که Excess Property Checks تایپ اسکریپت مشکل ایجاد می‌کند.</p><p>در مثال زیر می‌خواهیم <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>
+Incrementor را پیاده‌سازی کنیم ولی تایپ اسکریپت اجازه‌ی اضافه کردن یک پراپرتی جدید به عنوان counter را نمی‌دهد.</span></p>
 
 ```typescript
 interface Incrementor {
@@ -129,7 +129,7 @@ function createIncrementor(start = 0): Incrementor {
 }
 ```
 
-<>حتی زمانیکه از <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>type assertion استفاده می‌کنیم همچنان مشکل باقی است.</span></>
+<p>حتی زمانیکه از <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(0,0,0)"}}>type assertion استفاده می‌کنیم همچنان مشکل باقی است.</span></p>
 
 ```typescript
 function createIncrementor2(start = 0): Incrementor {
@@ -143,7 +143,7 @@ function createIncrementor2(start = 0): Incrementor {
 }
 ```
 
-<>برای حل این مشکل می‌توان از دو روش زیر استفاده کرد:</><>۱ـ استفاده از متغیر واسط</>
+<p>برای حل این مشکل می‌توان از دو روش زیر استفاده کرد:</p><p>۱ـ استفاده از متغیر واسط</p>
 
 ```typescript
 function createIncrementor3(start = 0): Incrementor {
@@ -157,7 +157,7 @@ function createIncrementor3(start = 0): Incrementor {
 }
 ```
 
-<>۲ـ در صورت امکان اضافه کردن Index signature به اینترفیس Incrementor</>
+<p>۲ـ در صورت امکان اضافه کردن Index signature به اینترفیس Incrementor</p>
 
 ```typescript
 interface Incrementor {

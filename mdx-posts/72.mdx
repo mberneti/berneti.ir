@@ -11,14 +11,14 @@ image: "1399/5/5/72cc2077-22d7-4ee9-81c5-66623888eeee.PNG"
 <img src="/img/js-30.png" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption>
 </figure>
 
-<>جاوااسکریپت شامل ۹ نوع از مقادیر هست که ۷ مورد آن از در دسته‌ی Primitive و یا اولیه و ۲ مورد دیگر در دسته‌ی Object و Function قرار دارند.</><h4>انواع مقادیر</h4>
-<ol><li>Primitive</li><li>Objects and Functions</li></ol><h4>مقادیر اولیه یا Primitive</h4><>فرق اساسی انواع مقادیر دسته‌ی Primitive&nbsp;با دسته‌ی Objects and Functions در این است که آنها <strong>غیر قابل تغییر هستن</strong> در صورتی که مقادیر موجود در دسته‌ی Objects and Functions قابل ویرایش هستند.</>
+<p>جاوااسکریپت شامل ۹ نوع از مقادیر هست که ۷ مورد آن از در دسته‌ی Primitive و یا اولیه و ۲ مورد دیگر در دسته‌ی Object و Function قرار دارند.</p><h4>انواع مقادیر</h4>
+<ol><li>Primitive</li><li>Objects and Functions</li></ol><h4>مقادیر اولیه یا Primitive</h4><p>فرق اساسی انواع مقادیر دسته‌ی Primitive&nbsp;با دسته‌ی Objects and Functions در این است که آنها <strong>غیر قابل تغییر هستن</strong> در صورتی که مقادیر موجود در دسته‌ی Objects and Functions قابل ویرایش هستند.</p>
 
 <figure className="image image_resized" style={{"width":"61.65%"}}>
 <img src="/img/js-31.png" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption>
 </figure>
 
-<>سعی کنید خروجی مثال زیر را حدس بزنید:</>
+<p>سعی کنید خروجی مثال زیر را حدس بزنید:</p>
 
 ```javascript
 let lastName = 'abc';
@@ -26,8 +26,8 @@ lastName[0] = 'i';
 console.log(lastName);
 ```
 
-<>خروجی این متد یا نمایش "abc" خواهد بود یا یک پیغام خطا که به فعال بودن <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode?ck_subscriber_id=918984170">strict mode</a> بستگی دارد ولی هرگز "ibc" نمایش داده نخواهد شد به این دلیل که "abc" یک نوع مقدار غیر قابل ویرایش است.</>
-<h4>تناقض؟؟</h4><>نظر شما در رابطه با مثال زیر چیست؟</>
+<p>خروجی این متد یا نمایش "abc" خواهد بود یا یک پیغام خطا که به فعال بودن <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode?ck_subscriber_id=918984170">strict mode</a> بستگی دارد ولی هرگز "ibc" نمایش داده نخواهد شد به این دلیل که "abc" یک نوع مقدار غیر قابل ویرایش است.</p>
+<h4>تناقض؟؟</h4><p>نظر شما در رابطه با مثال زیر چیست؟</p>
 
 ```javascript
 let pet = 'Narwhal';
@@ -35,7 +35,7 @@ pet = 'The Kraken';
 console.log(pet); // "The Kraken"
 ```
 
-<>خب شاید با نگاه اول شاید بگید که خب مقدار "Narwhal" به "The Kraken" در این مثال تغییر پیدا کرد اما در حقیقت با عمل انتصاب صرفا متغیر pet به مقدار جدید و مجزای "The Kraken" اشاره می‌کند.<br /><strong>نکته‌: متغیرها برابر با مقادیر نیست و این دو شامل دو مفهوم مجزا هستن. متغیرها صرفا به مقادیر اشاره می‌کنند.</strong></>
+<p>خب شاید با نگاه اول شاید بگید که خب مقدار "Narwhal" به "The Kraken" در این مثال تغییر پیدا کرد اما در حقیقت با عمل انتصاب صرفا متغیر pet به مقدار جدید و مجزای "The Kraken" اشاره می‌کند.<br /><strong>نکته‌: متغیرها برابر با مقادیر نیست و این دو شامل دو مفهوم مجزا هستن. متغیرها صرفا به مقادیر اشاره می‌کنند.</strong></p>
 
 <figure className="image image_resized" style={{"width":"58.6%"}}>
 <img src="/img/js-32.gif" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption>
@@ -68,28 +68,28 @@ let d = 1 / c; // -0
 <figure className="image image_resized" style={{"width":"37.06%"}}><img src="/img/js-34.png" /><figcaption>Just Javascript By <a href="https://illustrated.dev/">Maggie Appleton</a></figcaption></figure>
 
 <h4><strong>پیدا کردن نوع مقادیر در جاوااسکریپت با استفاده از typeof</strong></h4>
-<>متد typeof در جاوااسکریپ یک مقدار به عنوان ورودی دریافت می‌کند و یک حالت از انواع ۹ حالتی که می‌تواند داشته باشد را بصورت یک رشته برمی‌گرداند، مانند مثال زیر.</>
+<p>متد typeof در جاوااسکریپ یک مقدار به عنوان ورودی دریافت می‌کند و یک حالت از انواع ۹ حالتی که می‌تواند داشته باشد را بصورت یک رشته برمی‌گرداند، مانند مثال زیر.</p>
 
 ```js
 typeof(4); // "number"
 ```
 
 <h4>باگ جاوااسکریپت در تعیین نوع مقادیر با استفاده از typeof</h4>
-<>به مثال زیر توجه کنید</>
+<p>به مثال زیر توجه کنید</p>
 
 ```javascript
 typeof(null); // "object"
 ```
 
-<>خروجی متد typeof جاوااسکریپ برای null مقدار "object" است درصورتی که<a href="https://www.ecma-international.org/ecma-262/10.0/#sec-terms-and-definitions-null-type"> null از نوع object نبوده</a> و خودش یک نوع اصلی یا Primitive می‌باشد. (<a href="https://2ality.com/2013/10/typeof-null.html">یک یادداشت از تاریخچه رخ دادن این باگ در جاوااسکریپت</a>) امکان اصلاح این مشکل وجود نداشته به این دلیل که این باگ خیلی قدیمی بوده و رفع اون باعث ایجاد مشکل در وب‌سایتهای زیادی می‌شد.</><>خب حالا نظرتون در رابطه با مثال زیر چیه؟</>
+<p>خروجی متد typeof جاوااسکریپ برای null مقدار "object" است درصورتی که<a href="https://www.ecma-international.org/ecma-262/10.0/#sec-terms-and-definitions-null-type"> null از نوع object نبوده</a> و خودش یک نوع اصلی یا Primitive می‌باشد. (<a href="https://2ality.com/2013/10/typeof-null.html">یک یادداشت از تاریخچه رخ دادن این باگ در جاوااسکریپت</a>) امکان اصلاح این مشکل وجود نداشته به این دلیل که این باگ خیلی قدیمی بوده و رفع اون باعث ایجاد مشکل در وب‌سایتهای زیادی می‌شد.</p><p>خب حالا نظرتون در رابطه با مثال زیر چیه؟</p>
 
 ```javascript
 typeof([]); // "object"
 ```
 
-<>به نظرتون این هم باگ جاوااسکریپت هست و انتظار داشتین نوع arrays را دریافت کنید؟ اما اینطور نیست آرایه‌ها از نوع‌ها اصلی یا primitive نیستن و بنابراین از نوع object هستن و خروجی این کد صحیح است.</>
+<p>به نظرتون این هم باگ جاوااسکریپت هست و انتظار داشتین نوع arrays را دریافت کنید؟ اما اینطور نیست آرایه‌ها از نوع‌ها اصلی یا primitive نیستن و بنابراین از نوع object هستن و خروجی این کد صحیح است.</p>
 <h4>در جاوااسکریپت هیچ نوع دیگری وجود ندارد</h4>
-<>شاید برای شما سوال پیش بیاید که خب تکلیف انواع دیگه مثل آرایه‌ها چی میشه؟</><>جاوااسکریپت فقط شامل همین ۹ نوع از مقادیر اصلی است که به شرح آن پرداختیم مابقی آن از مثل آرایه و تاریخ و ... از نوع Object به حساب می‌آیند.&nbsp;</>
+<p>شاید برای شما سوال پیش بیاید که خب تکلیف انواع دیگه مثل آرایه‌ها چی میشه؟</p><p>جاوااسکریپت فقط شامل همین ۹ نوع از مقادیر اصلی است که به شرح آن پرداختیم مابقی آن از مثل آرایه و تاریخ و ... از نوع Object به حساب می‌آیند.&nbsp;</p>
 
 ```js
 console.log(typeof([])); // "object"

@@ -7,20 +7,20 @@ category: "دنیای جاوااسکریپت"
 image: "1399/1/4/fbf21201-b96b-46e4-bd73-47deb4b07768.jpeg"
 ---
 
-<>این مطلب را با یک مثال عجیب شروع می‌کنیم.</>
+<p>این مطلب را با یک مثال عجیب شروع می‌کنیم.</p>
 
 ```js
 let pizza = {};
 console.log(pizza.taste); // "pineapple"
 ```
 
-<>خروجی کد زیر "pineapple" است به نظر شما چنین اتفاقی ممکن است؟<br />ما صرفا یک شیئ pizza ایجاد کردیم که هیچ پراپرتی ندارد و انتظار داریم خروجی مقدار 
+<p>خروجی کد زیر "pineapple" است به نظر شما چنین اتفاقی ممکن است؟<br />ما صرفا یک شیئ pizza ایجاد کردیم که هیچ پراپرتی ندارد و انتظار داریم خروجی مقدار 
 <span className="katex-display"><span className="katex"><span className="katex-html" aria-hidden="true"><span className="base"><span className="strut" style={{"height":"0.85396em","verticalAlign":"-0.19444em"}}></span><span className="mord mathdefault">p</span><span className="mord mathdefault">i</span><span className="mord mathdefault" style={{"marginRight":"0.04398em"}}>z</span><span className="mord mathdefault" style={{"marginRight":"0.04398em"}}>z</span>
 <span className="mord mathdefault">a</span><span className="mord">.</span><span className="mord mathdefault">t</span><span className="mord mathdefault">a</span><span className="mord mathdefault">s</span>
 <span className="mord mathdefault">t</span><span className="mord mathdefault">e</span></span></span></span></span> برابر <span className="katex-display"><span className="katex"><span className="katex-html" aria-hidden="true"><span className="base"><span className="strut" style={{"height":"0.8888799999999999em","verticalAlign":"-0.19444em"}}></span><span className="mord mathdefault">u</span>
 <span className="mord mathdefault">n</span><span className="mord mathdefault">d</span><span className="mord mathdefault">e</span><span className="mord mathdefault" style={{"marginRight":"0.10764em"}}>f</span><span className="mord mathdefault">i</span><span className="mord mathdefault">n</span><span className="mord mathdefault">e</span><span className="mord mathdefault">d</span></span></span></span></span>
- باشد ولی اینگونه نیست. با مفاهیمی که تا بحال آموختیم نمی‌توانیم تصور کنیم که چه کدهایی قبل از این دو خط می‌تواند موجب این اتفاق شود پس مدل ذهنی ما کامل نیست.</><>برای حل این معما در این مطلب به شرح <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(46,46,50)"}}>prototypes می‌پردازیم. و از همه مهمتر اینکه prototypes قلب چندین ویژگی‌ مختلف جاوااسکریپت هستند. </span>معمولا افراد به یادگیری این مفهوم 
- <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(46,46,50)"}}>کم توجهی می‌کنند زیرا این مفهوم از نظر آنها خیلی غیر عادی به نظر می‌رسد درصورتی که مفهومی که در آن نهفته است بسیار ساده‌است.&nbsp;</span></><h4><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>Prototypes</span></h4><>مفهوم prototypes را به همراه مثال‌های زیر و مدل ذهنی که تا بحال آموختیم شرح خواهیم داد.<br />به کد زیر و مدل ذهنی آن توجه کنید.</>
+ باشد ولی اینگونه نیست. با مفاهیمی که تا بحال آموختیم نمی‌توانیم تصور کنیم که چه کدهایی قبل از این دو خط می‌تواند موجب این اتفاق شود پس مدل ذهنی ما کامل نیست.</p><p>برای حل این معما در این مطلب به شرح <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(46,46,50)"}}>prototypes می‌پردازیم. و از همه مهمتر اینکه prototypes قلب چندین ویژگی‌ مختلف جاوااسکریپت هستند. </span>معمولا افراد به یادگیری این مفهوم 
+ <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(46,46,50)"}}>کم توجهی می‌کنند زیرا این مفهوم از نظر آنها خیلی غیر عادی به نظر می‌رسد درصورتی که مفهومی که در آن نهفته است بسیار ساده‌است.&nbsp;</span></p><h4><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>Prototypes</span></h4><p>مفهوم prototypes را به همراه مثال‌های زیر و مدل ذهنی که تا بحال آموختیم شرح خواهیم داد.<br />به کد زیر و مدل ذهنی آن توجه کنید.</p>
 
 ```js
 let human = {
@@ -34,13 +34,13 @@ let gwen = {
 
 <figure className="image image_resized" style={{"width":"55.84%"}}><img src="/img/js-2.png" /></figure>
 
-<>در مثال بالا شیئ که gwen به آن متصل است پراپرتی teeth را ندارد پس در نتیجه خروجی کد زیر undefined خواهد بود.</>
+<p>در مثال بالا شیئ که gwen به آن متصل است پراپرتی teeth را ندارد پس در نتیجه خروجی کد زیر undefined خواهد بود.</p>
 
 ```js
 console.log(gwen.teeth); // undefined
 ```
 
-<>فرض کنیم می‌خواهیم به جاوااسکریپت بگوییم در صورتی که یک پراپرتی در یک شیئ مثل پراپرتی teeth در شیئ gwen وجود نداشت به دنبال آن پراپرتی در یک شیئ دیگری مانند human بگردد و مقدار آن را برگرداند، این دقیقا همان مفهوم prototype است.<br />ما با تعریف یک پراپرتی به نام کلیدی <span className="katex-error" title="ParseError: KaTeX parse error: Expected group after '_' at position 1: _̲_proto__" style={{"color":"#cc0000"}}>__proto__</span> مشخص می‌کنیم که درصورت پیدا نشدن یک پراپرتی در یک شیئ جاوااسکریپت برای یافتن آن در کدام شیئ دیگری می‌تواند جستوجو کند. به مثال زیر توجه کنید.</>
+<p>فرض کنیم می‌خواهیم به جاوااسکریپت بگوییم در صورتی که یک پراپرتی در یک شیئ مثل پراپرتی teeth در شیئ gwen وجود نداشت به دنبال آن پراپرتی در یک شیئ دیگری مانند human بگردد و مقدار آن را برگرداند، این دقیقا همان مفهوم prototype است.<br />ما با تعریف یک پراپرتی به نام کلیدی <span className="katex-error" title="ParseError: KaTeX parse error: Expected group after '_' at position 1: _̲_proto__" style={{"color":"#cc0000"}}>__proto__</span> مشخص می‌کنیم که درصورت پیدا نشدن یک پراپرتی در یک شیئ جاوااسکریپت برای یافتن آن در کدام شیئ دیگری می‌تواند جستوجو کند. به مثال زیر توجه کنید.</p>
 
 ```js
 let human = {
@@ -55,23 +55,23 @@ let gwen = {
 };
 ```
 
-<>مدل ذهنی قطعه کد بالا</>
+<p>مدل ذهنی قطعه کد بالا</p>
 
 <figure className="image image_resized" style={{"width":"60%"}}><img src="/img/js-3.png" /></figure>
 
-<>در نتیجه پس از این تغییرات خروجی کد زیر برابر 32 می‌شود.</>
+<p>در نتیجه پس از این تغییرات خروجی کد زیر برابر 32 می‌شود.</p>
 
 ```js
 console.log(gwen.teeth); // 32
 ```
 
-<>نگاه دقیقتر به فرایندی که شرح دادیم.</>
+<p>نگاه دقیقتر به فرایندی که شرح دادیم.</p>
 
 <figure className="image image_resized" style={{"width":"59.03%"}}><img src="/img/js-4.gif" /></figure>
 
 <h4>مفهوم <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>The Prototype Chain</span></h4>
 
-<>مفهوم زنجیره prototype به این اشاره می‌کند که جاوااسکریپت عملیات جستوجو در prototype را مشابه شئ اول را همیشه تکرار می‌کند و زمانی متوقف می‌شود که یا آن پراپرتی را پیدا کند و یا مقدار __proto__ یک شیئ تعریف نشده باشد.<br />مثال زیر نمونه‌ای از این مفهوم زنجیره prototype است.</>
+<p>مفهوم زنجیره prototype به این اشاره می‌کند که جاوااسکریپت عملیات جستوجو در prototype را مشابه شئ اول را همیشه تکرار می‌کند و زمانی متوقف می‌شود که یا آن پراپرتی را پیدا کند و یا مقدار __proto__ یک شیئ تعریف نشده باشد.<br />مثال زیر نمونه‌ای از این مفهوم زنجیره prototype است.</p>
 
 ```js
 let mammal = {
@@ -96,33 +96,33 @@ console.log(gwen.brainy); // true
 
 <h4>پراپرتی اصلی یک آبجکت یا یک <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>Prototype</span></h4>
 
-<>برای تشخیص این مورد کافیست از متد hasOwnProperty استفاده کنیم در صورتی که پراپرتی در آبجکت موجود باشد مقدار ture در غیر اینصورت مقدار false را برمی‌گرداند.</>
+<p>برای تشخیص این مورد کافیست از متد hasOwnProperty استفاده کنیم در صورتی که پراپرتی در آبجکت موجود باشد مقدار ture در غیر اینصورت مقدار false را برمی‌گرداند.</p>
 
 ```js
 console.log(gwen.hasOwnProperty('brainy')); // false
 console.log(mammal.hasOwnProperty('brainy')); // true
 ```
 
-<>همانطور که قبلا اشاره کردیم مفهوم prototype صرفا به مفهوم جستوجوی جاوااسکریپت برای یافتن یک مقدار اشاره دارد و نه چیزی بیشتر پس با توجه به آنچه تا بحال آموختیم با عملیات انتصاب فقط پراپرتی جدید teeth در شیئ gwen ایجاد شده و به مقدار 31 متصل می‌شود.</>
+<p>همانطور که قبلا اشاره کردیم مفهوم prototype صرفا به مفهوم جستوجوی جاوااسکریپت برای یافتن یک مقدار اشاره دارد و نه چیزی بیشتر پس با توجه به آنچه تا بحال آموختیم با عملیات انتصاب فقط پراپرتی جدید teeth در شیئ gwen ایجاد شده و به مقدار 31 متصل می‌شود.</p>
 
 <figure className="image image_resized" style={{"width":"61.48%"}}><img src="/img/js-6.png" /></figure>
 <h4><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>The Object Prototype</span></h4>
-<>به شیئ زیر توجه کنید، هیچ prototype ای برای آن تعریف نکردیم درسته؟</>
+<p>به شیئ زیر توجه کنید، هیچ prototype ای برای آن تعریف نکردیم درسته؟</p>
 
 ```js
 let obj = {};
 ```
 
-<>حال قطعه کد زیر را در console مرورگر خود اجرا کنید.</>
+<p>حال قطعه کد زیر را در console مرورگر خود اجرا کنید.</p>
 
 ```js
 let obj = {};
 console.log(obj.__proto__); // Play with it!
 ```
 
-<>با کمال تعجب مقدار __proto__ برابر undefined یا null نیست بلکه شامل مقادیر مختلفی مانند تابع toString و <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(46,46,50)"}}>hasOwnProperty و ... است. با این اوصاف اونطور که ما تصور کردیم ما با استفاده از {} صرفا یک شیئ خالی ایجاد نکردیم بلکه جاوااسکریپت بصورت پیش فرض یک پراپرتی __proto__ تعریف کرده که به شیئ ای اشاره می‌کند که به آن The Object Prototype می‌گوییم.</span></>
+<p>با کمال تعجب مقدار __proto__ برابر undefined یا null نیست بلکه شامل مقادیر مختلفی مانند تابع toString و <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(46,46,50)"}}>hasOwnProperty و ... است. با این اوصاف اونطور که ما تصور کردیم ما با استفاده از {} صرفا یک شیئ خالی ایجاد نکردیم بلکه جاوااسکریپت بصورت پیش فرض یک پراپرتی __proto__ تعریف کرده که به شیئ ای اشاره می‌کند که به آن The Object Prototype می‌گوییم.</span></p>
 <figure className="image image_resized" style={{"width":"64.77%"}}><img src="/img/js-7.png" /></figure>
-<>برای ایجاد یک آبجکت بدون prototype پیش فرض زمان تعریف آن می‌توان مقدار __proto__ را برابر null قرار داد.</>
+<p>برای ایجاد یک آبجکت بدون prototype پیش فرض زمان تعریف آن می‌توان مقدار __proto__ را برابر null قرار داد.</p>
 
 ```js
 let weirdo = {
@@ -133,21 +133,21 @@ console.log(weirdo.toString); // undefined
 ```
 
 <h4>آلوده کردن prototype یا Polluting the Prototype</h4>
-<>همانطور که تا الان متوجه شدیم تمام object ها بصورت پیش فرض شامل یک پراپرتی __proto__ هستن که به یک شیئ که نام آن را The Object Prototype گذاشتیم اشاره می‌کند.</>
+<p>همانطور که تا الان متوجه شدیم تمام object ها بصورت پیش فرض شامل یک پراپرتی __proto__ هستن که به یک شیئ که نام آن را The Object Prototype گذاشتیم اشاره می‌کند.</p>
 <figure className="image image_resized" style={{"width":"64.78%"}}>
 <img src="/img/js-8.png" /></figure>
-<>به کد زیر توجه کنید.</>
+<p>به کد زیر توجه کنید.</p>
 
 ```js
 let obj = {};
 obj.__proto__.smell = 'banana';
 ```
 
-<>با این کار ما تغییراتی در prototype پیش فرض ایجاد کردیم که prototype پیش فرض تمام object هایی بوده که تا بحال ساخته‌ایم و که نتایج زیر را به دنبال دارد.</>
+<p>با این کار ما تغییراتی در prototype پیش فرض ایجاد کردیم که prototype پیش فرض تمام object هایی بوده که تا بحال ساخته‌ایم و که نتایج زیر را به دنبال دارد.</p>
 
 ```js
 console.log(sherlock.smell); // "banana"
 console.log(watson.smell); // "banana"
 ```
 
-<figure className="image image_resized" style={{"width":"64.38%"}}><img src="/img/js-9.png" /></figure><>تغییر دادن prototype مشترک بین object های مختلف را آلوده کردن prototype یا Polluting the Prototype می‌گویند.</><>در گذشته برای افزودن ویژگی‌های سفارشی جدید به جاوااسکریپت از این روش بسیار استفاده می‌شد ولی با گذشت سالها جامعه وب متوجه شدن که اینکار باعث ایجاد شکنندگی می‌شود و اضافه کردن <a href="https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible?ck_subscriber_id=918984170">قابلیت‌های جدید زبان</a> را دشوارتر می‌کند و ترجیح دادن از آن دوری کنند.</><>حالا شما می‌تونید معمای مثال اول را حل کرده و در console مرورگر نتایج را تست کنید.</><h4>__proto__ &nbsp;یا prototype</h4><>ممکن است شما<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter?ck_subscriber_id=918984170"> عناوین صفحه‌ی MDN</a> را مشاهده کنید و برای شما سوال پیش بیاید که پراپرتی prototype چیست.</><>خبر بد: prototype تقریبا هیچ ربطی به مفهوم prototypes و __proto__ که تا بحال راجع به آن صحبت کردیم ندارد بلکه مرتبط با عملگر <strong>new</strong> در جاوااسکریپت است.</><>پس به یاد داشته باشید <strong>__proto__</strong> همان نمونه‌ی اولیه یا یک prototype از یک شیئ است.<br />در صورتی که پرارپتی <strong>prototype</strong> یک شیئ و عملگر <strong>new</strong> دو مفهوم کاملا مجزا هستند.</>
+<figure className="image image_resized" style={{"width":"64.38%"}}><img src="/img/js-9.png" /></figure><p>تغییر دادن prototype مشترک بین object های مختلف را آلوده کردن prototype یا Polluting the Prototype می‌گویند.</p><p>در گذشته برای افزودن ویژگی‌های سفارشی جدید به جاوااسکریپت از این روش بسیار استفاده می‌شد ولی با گذشت سالها جامعه وب متوجه شدن که اینکار باعث ایجاد شکنندگی می‌شود و اضافه کردن <a href="https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible?ck_subscriber_id=918984170">قابلیت‌های جدید زبان</a> را دشوارتر می‌کند و ترجیح دادن از آن دوری کنند.</p><p>حالا شما می‌تونید معمای مثال اول را حل کرده و در console مرورگر نتایج را تست کنید.</p><h4>__proto__ &nbsp;یا prototype</h4><p>ممکن است شما<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter?ck_subscriber_id=918984170"> عناوین صفحه‌ی MDN</a> را مشاهده کنید و برای شما سوال پیش بیاید که پراپرتی prototype چیست.</p><p>خبر بد: prototype تقریبا هیچ ربطی به مفهوم prototypes و __proto__ که تا بحال راجع به آن صحبت کردیم ندارد بلکه مرتبط با عملگر <strong>new</strong> در جاوااسکریپت است.</p><p>پس به یاد داشته باشید <strong>__proto__</strong> همان نمونه‌ی اولیه یا یک prototype از یک شیئ است.<br />در صورتی که پرارپتی <strong>prototype</strong> یک شیئ و عملگر <strong>new</strong> دو مفهوم کاملا مجزا هستند.</p>

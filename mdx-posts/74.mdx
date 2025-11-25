@@ -7,9 +7,9 @@ category: "دنیای جاوااسکریپت"
 image: "1399/1/4/9aafc0f9-ebde-4474-b675-802132d8bbf8.png"
 ---
 
-<>انواع روش‌های مقایسه در جاوااسکریپت</>
-<ul><li><strong>Strict Equality</strong><ul><li>a === b</li><li>با سه علامت مساوی یا ===</li></ul></li><li><strong>Loose Equality</strong><ul><li>a == b</li><li>با دو علامت مساوی یا ==</li></ul></li><li><strong>Same Value Equality</strong><ul><li>Object.is(a, b)</li></ul></li></ul><h4>۱. روش مقایسه <strong>Same Value Equality</strong></h4><>به دلیل تشابه رفتار روش Same Value Equality با مدل ذهنی ما در پست‌های قبلی <a href="https://www.berneti.ir/72/%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%A7%D8%B1%D9%87%D8%A7-%DB%8C%D8%A7-values-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D8%A8%D9%87-%D8%B2%D8%A8%D8%A7%D9%86-%D8%B3%D8%A7%D8%AF%D9%87-%DB%B1">انواع مقدارها یا Values</a> و <a href="https://www.berneti.ir/73/%D9%85%D8%AA%D8%BA%DB%8C%D8%B1%D9%87%D8%A7-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D8%A8%D9%87-%D8%B2%D8%A8%D8%A7%D9%86-%D8%B3%D8%A7%D8%AF%D9%87-%DB%B2">متغیرها یا Variables</a> از این روش شروع کردیم.</><>پس از مشاهده کدهای زیر مدل ذهنی آن را تصور کرده و سپس نتیجه را حدس بزنید. ( با در نظر گرفتن این مورد که خروجی متد <span className="katex-display"><span className="katex"><span className="katex-html" aria-hidden="true"><span className="base"><span className="strut" style={{"height":"1em","verticalAlign":"-0.25em"}}></span>
-<span className="mord mathdefault" style={{"marginRight":"0.02778em"}}>O</span><span className="mord mathdefault">b</span><span className="mord mathdefault" style={{"marginRight":"0.05724em"}}>j</span><span className="mord mathdefault">e</span><span className="mord mathdefault">c</span><span className="mord mathdefault">t</span><span className="mord">.</span><span className="mord mathdefault">i</span><span className="mord mathdefault">s</span><span className="mopen">(</span><span className="mord mathdefault">a</span><span className="mpunct">,</span><span className="mspace" style={{"marginRight":"0.16666666666666666em"}}></span><span className="mord mathdefault">b</span><span className="mclose">)</span></span></span></span></span> فقط در صورتی برابر true است که دو متغیر ورودی آن دقیقا به یک مقدار در دنیای جاوااسکریپت اشاره می‌کنند.)</>
+<p>انواع روش‌های مقایسه در جاوااسکریپت</p>
+<ul><li><strong>Strict Equality</strong><ul><li>a === b</li><li>با سه علامت مساوی یا ===</li></ul></li><li><strong>Loose Equality</strong><ul><li>a == b</li><li>با دو علامت مساوی یا ==</li></ul></li><li><strong>Same Value Equality</strong><ul><li>Object.is(a, b)</li></ul></li></ul><h4>۱. روش مقایسه <strong>Same Value Equality</strong></h4><p>به دلیل تشابه رفتار روش Same Value Equality با مدل ذهنی ما در پست‌های قبلی <a href="https://www.berneti.ir/72/%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%A7%D8%B1%D9%87%D8%A7-%DB%8C%D8%A7-values-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D8%A8%D9%87-%D8%B2%D8%A8%D8%A7%D9%86-%D8%B3%D8%A7%D8%AF%D9%87-%DB%B1">انواع مقدارها یا Values</a> و <a href="https://www.berneti.ir/73/%D9%85%D8%AA%D8%BA%DB%8C%D8%B1%D9%87%D8%A7-%D8%AF%D8%B1-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D8%AC%D8%A7%D9%88%D8%A7%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D8%A8%D9%87-%D8%B2%D8%A8%D8%A7%D9%86-%D8%B3%D8%A7%D8%AF%D9%87-%DB%B2">متغیرها یا Variables</a> از این روش شروع کردیم.</p><p>پس از مشاهده کدهای زیر مدل ذهنی آن را تصور کرده و سپس نتیجه را حدس بزنید. ( با در نظر گرفتن این مورد که خروجی متد <span className="katex-display"><span className="katex"><span className="katex-html" aria-hidden="true"><span className="base"><span className="strut" style={{"height":"1em","verticalAlign":"-0.25em"}}></span>
+<span className="mord mathdefault" style={{"marginRight":"0.02778em"}}>O</span><span className="mord mathdefault">b</span><span className="mord mathdefault" style={{"marginRight":"0.05724em"}}>j</span><span className="mord mathdefault">e</span><span className="mord mathdefault">c</span><span className="mord mathdefault">t</span><span className="mord">.</span><span className="mord mathdefault">i</span><span className="mord mathdefault">s</span><span className="mopen">(</span><span className="mord mathdefault">a</span><span className="mpunct">,</span><span className="mspace" style={{"marginRight":"0.16666666666666666em"}}></span><span className="mord mathdefault">b</span><span className="mclose">)</span></span></span></span></span> فقط در صورتی برابر true است که دو متغیر ورودی آن دقیقا به یک مقدار در دنیای جاوااسکریپت اشاره می‌کنند.)</p>
 
 ```js
 let dwarves = 7;
@@ -25,7 +25,7 @@ console.log(Object.is(continents, worldWonders)); // false
 console.log(Object.is(worldWonders, dwarves)); // true
 ```
 
-<>حال اجازه دهید مثالی با استفاده از مقادیر دسته‌ی Objects and Functions را بررسی کنیم.</>
+<p>حال اجازه دهید مثالی با استفاده از مقادیر دسته‌ی Objects and Functions را بررسی کنیم.</p>
 
 ```js
 let banana = {};
@@ -34,13 +34,13 @@ let chocolate = cherry;
 cherry = {};
 ```
 
-<>به نحوه‌ی شکل گیری گام به گام مدل ذهنی توجه کنید.</>
+<p>به نحوه‌ی شکل گیری گام به گام مدل ذهنی توجه کنید.</p>
 <figure className="image image_resized" style={{"width":"48.84%"}}><img src="/img/js-20.gif" /></figure>
 
-<>نتیجه نهایی</>
+<p>نتیجه نهایی</p>
 <figure className="image image_resized" style={{"width":"55.11%"}}><img src="/img/js-21.png" /></figure>
 
-<>نتایج مورد نظر با توجه به مدل ذهنی بالا</>
+<p>نتایج مورد نظر با توجه به مدل ذهنی بالا</p>
 
 ```js
 console.log(Object.is(banana, cherry)); // false
@@ -48,7 +48,7 @@ console.log(Object.is(cherry, chocolate)); // false
 console.log(Object.is(chocolate, banana)); // true
 ```
 
-<h4>۲. روش مقایسه‌ی <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>Strict Equality</span></h4><><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>این روش مشابه روش قبل عمل مقایسه را انجام می‌دهد بجز دو مورد نادر زیر که استثنا هستند.</span></><ul><li><strong>NaN === NaN</strong><ul><li>که خروجی false را برمی گرداند درصورتی که هر دو یک شیئ از دسته‌ی Primitive هستند و مقدار مورد نظر true است.</li></ul></li><li><strong>-0 === 0 یا 0 === -0</strong><ul><li>که خروجی true را بر می‌گرداند در صورتی که دو مقدار 0 و -0 دو مقدار متفاوت هستند.</li></ul></li></ul><h4>۳. روش مقایسه‌ی <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>Loose Equality</span></h4><><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>این روش که به آن روش مقایسه‌ای انتزاعی نیز می‌گویند یک روش مقایسه‌ای گیج کننده است. به نتایج استفاده از این روش در کد زیر توجه کنید.</span></>
+<h4>۲. روش مقایسه‌ی <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>Strict Equality</span></h4><p><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>این روش مشابه روش قبل عمل مقایسه را انجام می‌دهد بجز دو مورد نادر زیر که استثنا هستند.</span></p><ul><li><strong>NaN === NaN</strong><ul><li>که خروجی false را برمی گرداند درصورتی که هر دو یک شیئ از دسته‌ی Primitive هستند و مقدار مورد نظر true است.</li></ul></li><li><strong>-0 === 0 یا 0 === -0</strong><ul><li>که خروجی true را بر می‌گرداند در صورتی که دو مقدار 0 و -0 دو مقدار متفاوت هستند.</li></ul></li></ul><h4>۳. روش مقایسه‌ی <span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>Loose Equality</span></h4><p><span style={{"backgroundColor":"rgb(255,255,255)","color":"rgb(2,19,38)"}}>این روش که به آن روش مقایسه‌ای انتزاعی نیز می‌گویند یک روش مقایسه‌ای گیج کننده است. به نتایج استفاده از این روش در کد زیر توجه کنید.</span></p>
 
 ```js
 console.log([[]] == ''); // true
@@ -56,4 +56,4 @@ console.log(true == [1]); // true
 console.log(false == [0]); // true
 ```
 
-<>این روش بصورت گسترده به عنوان یک تصمیم بد در طراحی اولیه شناخته شده‌است و بسیاری از استانداردها برنامه نویسی جاوااسکریپت استفاده از == و =! را منع کرده‌اند.<br />استفاده از این روش در پروژه‌های جدید کاملا غیر معمول است و به همین خاطر بیشتر راجع به آن حرف نمی‌زنیم. اگر شما علاقه دارید بدانید این روش چگونه کار می‌کند به <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness?ck_subscriber_id=918984170#Loose_equality_using">== Loose equality using</a> مراجعه کنید.</><>&nbsp;</>
+<p>این روش بصورت گسترده به عنوان یک تصمیم بد در طراحی اولیه شناخته شده‌است و بسیاری از استانداردها برنامه نویسی جاوااسکریپت استفاده از == و =! را منع کرده‌اند.<br />استفاده از این روش در پروژه‌های جدید کاملا غیر معمول است و به همین خاطر بیشتر راجع به آن حرف نمی‌زنیم. اگر شما علاقه دارید بدانید این روش چگونه کار می‌کند به <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness?ck_subscriber_id=918984170#Loose_equality_using">== Loose equality using</a> مراجعه کنید.</p><p>&nbsp;</p>

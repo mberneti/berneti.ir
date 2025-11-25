@@ -7,23 +7,23 @@ category: "جاوااسکریپت"
 image: "1398/12/4/0e1890ee-eaea-4d1b-8269-fb786fffafe6.png"
 ---
 
-<>کدام اسب سریع‌تر می‌رسد؟ :) </>
+<p>کدام اسب سریع‌تر می‌رسد؟ :) </p>
 <br />
-<>مورد اول</>
+<p>مورد اول</p>
 
 ```javascript
 setTimeout(() => console.log("Horse A"), 1000)
 console.log("Horse B")
 ```
 
-<>مورد دوم</>
+<p>مورد دوم</p>
 
 ```javascript
 setTimeout(() => console.log("Horse A"), 0)
 console.log("Horse B")
 ```
 
-<>مورد سوم</>
+<p>مورد سوم</p>
 
 ```javascript
 setTimeout(() => console.log("Horse A"), 0);
@@ -31,7 +31,7 @@ wait60Se(); //expensive sync computation
 console.log("Horse B")
 ```
 
-<>مورد چهارم</>
+<p>مورد چهارم</p>
 
 ```javascript
 const operation = fetch('http://something.com');
@@ -39,7 +39,7 @@ operation.then(() => console.log("Horse A"));
 console.log("Horse B")
 ```
 
-<>مورد پنجم</>
+<p>مورد پنجم</p>
 
 ```javascript
 setTimeout(() => console.log("Horse A"), 0);
@@ -47,7 +47,7 @@ const promise = Promise.resolve();
 promise.then(() => console.log("Horse B"));
 ```
 
-<>مورد ششم</>
+<p>مورد ششم</p>
 ```javascript
 setTimeout(() => console.log("Horse A"), 5)
 const promise = new Promise((resolve) => {
@@ -56,7 +56,7 @@ const promise = new Promise((resolve) => {
 promise.then(() => console.log("Horse B"))
 ```
 
-<>مورد هفتم</>
+<p>مورد هفتم</p>
 ```javascript
 setTimeout(() => console.log("Horse A"), 0);
 const promise = fetch("someUrl") // takes 100ms
@@ -64,14 +64,14 @@ promise.then(x => console.log("Horse B"));
 waitFor200ms();
 ```
 
-<>منابع:</>
+<p>منابع:</p>
 <ul>
 <li><a href="https://javascript.plainenglish.io/you-dont-know-javascript-until-you-can-beat-this-game-aa7fd58befb?">javascript.plainenglish.io</a></li>
 </ul>
 
 <h4><br />رفع مشکل سایدبار</h4>
 
-<>https://codepen.io/mberneti/pen/eYgwreg</>
+<p>https://codepen.io/mberneti/pen/eYgwreg</p>
 
 ```text
 Select all p elements which have a "lang" attribute equal to "en", 

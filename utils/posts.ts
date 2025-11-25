@@ -45,7 +45,7 @@ function slugify(str: string) {
     .toLowerCase()
     .replace(/&+/g, 'and')
     .replace(/'/g, '')
-    .replace(/[^a-z0-9-\u0600-\u06FF]/g, '-')
+    .replace(/[^a-z0-9-\u0600-\u06FF\u200C]/g, '-') // Added \u200C for ZWNJ
     .replace(/-+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
